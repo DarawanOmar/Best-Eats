@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import Hero from './components/Hero'
+import Cards  from "./components/Cards";
+import Foods from "./components/Foods";
+import RateFood from "./components/RateFood";
+import RateMenuFooter from "./components/RateMenuFooter";
+import { useSelector  } from 'react-redux'
+
 
 function App() {
+
+  const darkValue = useSelector((state)=>state.dark.isDark);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkValue ? 'bg-black text-white duration-700' : 'bg-white text-black duration-700'}>    
+        <Navbar/>
+        <Hero/>
+        <Cards/>
+        <Foods/>
+        <RateFood/>
+        <RateMenuFooter/>
     </div>
   );
 }
