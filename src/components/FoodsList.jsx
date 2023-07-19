@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { increment , decrement ,favoraite} from './features/Count/CountSlice'
 import { useDispatch , useSelector} from 'react-redux';
 import {AiOutlineStar} from 'react-icons/ai'
-
+import { Link } from 'react-router-dom';
 
 const FoodsList = ({id,name,count,image,price}) => {
 
@@ -15,7 +15,7 @@ const FoodsList = ({id,name,count,image,price}) => {
 
   return (
     <div  className={darkValue ? 'hover:scale-105 rounded-lg cursor-pointer duration-300 border border-orange- relative ' : '  relative hover:scale-105 rounded-lg cursor-pointer duration-300'} >
-        <img className='h-[150px] w-full  object-cover rounded-t-xl' src={image} alt={name} />
+        <Link to={`/foodpage/${id}`} > <img className='h-[150px] w-full  object-cover rounded-t-xl' src={image} alt={name} /> </Link>
         <h1 className='text-center font-bold pt-2 md:text-xl py-2'>{name}</h1>
         <div className='flex  justify-between items-center shadow-xl p-2 md:p-4 rounded-b-lg pb-6'>
             <div className='flex space-x-2 '>

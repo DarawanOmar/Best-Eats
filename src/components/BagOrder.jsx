@@ -9,7 +9,7 @@ const BagOrder = () => {
     const { foods } = useSelector((state) => state.count);
     const total = useSelector((state) => state.count.totalPrice);
     const foodFilter = foods.filter((food) => food.count > 0);
-
+    console.log(foodFilter);
 
     return (
         <div className={darkValue ? 'max-w-6xl mx-auto font-serif h-screen' : 'max-w-6xl mx-auto font-serif'}>

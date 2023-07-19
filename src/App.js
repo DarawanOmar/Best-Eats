@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Favoraite from "./components/Favoraite";
 import About from "./components/About";
 import Foods from "./components/Foods";
+import FoodPage from "./components/FoodPage";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/favoraite" element={<Favoraite/>}/>
             <Route path="/about" element={<About/>}/>
             <Route path="/food" element={<Foods/>}/>
+            <Route path="/foodpage/:id" element={<FoodPage/>}/>
           </Routes>
         </BrowserRouter>
 
