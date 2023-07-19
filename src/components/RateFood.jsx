@@ -1,6 +1,6 @@
 import React from 'react'
 import {AiOutlineStar} from 'react-icons/ai'
-import {useRateBurger , useRateChicken , useRatePizza , useRateSalad} from './useRate'
+import {useRateBurger , useRateChicken , useRatePizza , useRateSalad} from './hook/useRate'
 
 const RateFood = () => {
     const {rateBurger,handleRate , handleRate2 , handleRate3 , handleRate4 , handleRate5} = useRateBurger()
