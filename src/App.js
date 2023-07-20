@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar";
 import { useEffect } from "react";
 import { BrowserRouter , Routes , Route } from "react-router-dom";
 import { useSelector  , useDispatch} from 'react-redux'
-import { fetchData ,totalCalculator} from "./components/features/Count/CountSlice";
+import { fetchData ,totalCalculator} from "./features/Count/CountSlice";
 import BagOrder from "./components/BagOrder";
 import Home from "./components/Home";
 import Favoraite from "./components/Favoraite";
@@ -25,7 +25,7 @@ function App() {
   const darkValue = useSelector((state)=>state.dark.isDark);
 
   return (
-    <div className={darkValue ? 'bg-black text-white duration-700' : 'bg-white text-black duration-700'}>    
+    <div className={darkValue ? 'bg-black text-white duration-700 ' : 'bg-white text-black duration-700'}>    
         <BrowserRouter>
           <Navbar/>
           <Routes>

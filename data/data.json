@@ -184,29 +184,29 @@
       "image":
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaUOD4NMVfMGdg1SEzovaEXydk9WSSZNJ1Vg&usqp=CAU",
       "count" : 0,
-      "price": 2  ,
+      "price": 12  ,
       "favoraite" : false,
       "discription" : "Any type of biryani consists of four main components: rice, meat, marinade, and spices. When it comes to making biryani rice, basmati rice is typically the go-to option; however, some cooks prefer to use other grains, such as jeerakasala or seeraga samba"
     },
     {
       "id": 18,
       "name": "Kfta",
-      "category": "chicken",
+      "category": "pizza",
       "image":
         "https://img.freepik.com/free-photo/top-view-cooked-vegetables-such-as-red-tomatoes-green-bell-pepper-black-eggplants-potatoes-inside-plate-plate_140725-14289.jpg?size=626&ext=jpg&ga=GA1.2.656506428.1687210625&semt=ais",
       "count" : 0,
-      "price" : 2  ,
+      "price" : 12  ,
       "favoraite" : false,
       "discription" : "Koftas can be loosely described as meatballs, and they are often made with lamb or beef or chicken meat in India. However, vegetarian versions like malai kofta, made with paneer, a fresh Indian cheese, and khoya, a reduction of milk, are just as -- or perhaps more -- popular. Koftas are not a concept native to India"
     },
     {
       "id": 19,
       "name": "Kwba",
-      "category": "chicken",
+      "category": "burger",
       "image":
         "https://img.freepik.com/free-photo/top-view-vegan-goodies-wooden-board_23-2148305801.jpg?size=626&ext=jpg&ga=GA1.2.656506428.1687210625&semt=ais",
       "count" : 0,
-        "price": 2  ,
+        "price": 12  ,
         "favoraite" : false,
         "discription" : "Kibbeh ( also kubba and other spellings; Arabic: كبة, romanized: kibba), Koupes in Cyprus, is a family of dishes based on spiced ground meat, onions, and grain, popular in many countries of West Asia"
     },
@@ -217,7 +217,7 @@
       "image":
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlMtisYa_wAefZFOAcU0XlHy_2-yrf8EF1NyyPG7_HgJfjBvTHhFIw3Xhe_q3vZg65raE&usqp=CAU",
       "count" : 0,
-        "price": 2  ,
+        "price": 12  ,
         "favoraite" : false,
         "discription" : "Kurdish meatballs are typically served with an assortment of dishes like rice, hummus, grape leaves, and more Make this recipe using salt and pepper from our shop!"
     }

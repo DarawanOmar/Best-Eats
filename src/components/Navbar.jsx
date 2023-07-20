@@ -6,7 +6,7 @@ import {MdHelp ,MdPerson} from 'react-icons/md'
 import {BsSun ,BsMoon ,BsSaveFill } from 'react-icons/bs';
 
 import { useSelector ,useDispatch } from 'react-redux'
-import {dark , night} from './features/Dark-Mode/DarkModeSlice'
+import {dark , night} from '../features/Dark-Mode/DarkModeSlice'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
@@ -29,11 +29,17 @@ const Navbar = () => {
      }
   return (
     <div className='top-0 sticky z-10 duration-700'>
-        <div className={darkValue ? 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-black text-white duration-700' : 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-white text-black duration-700'}>
+        <div className={darkValue ? 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-black text-white duration-700 border-2 border-x-orange-500 border-y-black' : 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-white text-black duration-700'}>
             
-           <div className='flex items-center '>
-                <CgMenu size={'25px'} onClick={handleNav} className='cursor-pointer'/>
-                <Link to='/' className='text-xl sm:text-2xl md:text-3xl'>Best <span className='font-bold text-orange-500'>Eats</span></Link>
+           <div className='flex items-center space-x-2'>
+                {/* <CgMenu size={'25px'} onClick={handleNav} className='cursor-pointer'/> */}
+                <div onClick={handleNav}  className='flex flex-col gap-[2px] cursor-pointer' >
+                    <hr className='p-[1.2px] bg-black w-[20px] ' />
+                    <hr className='p-[1.2px] bg-black w-[16px] ' />
+                    <hr className='p-[1.2px] bg-black w-[12px] ' />
+                    <hr className='p-[1.2px] bg-black w-[8px] ' />
+                </div>
+                <Link to='/' className='text-3xl md:text-3xl'>Best <span className='font-bold text-orange-500'>Eats</span></Link>
                 <div className='hidden md:flex lg:ml-4 items-center bg-gray-400 text-white rounded-full text-sm'>
                     <p onClick={handleDeliveryBtn} className={handleBtn && darkValue ? 'bg-white text-black rounded-full p-2 border-y-orange-500 cursor-pointer  duration-500 ' : handleBtn && !darkValue ? 'bg-black rounded-full p-2 border-y-orange-500 cursor-pointer  duration-500 ' : 'bg-gray-400 rounded-full p-2  cursor-pointer duration-500'}>Delivery</p>
                     <p onClick={handlePickupDelivery} className={!handleBtn && darkValue ? 'bg-white text-black rounded-full p-2  cursor-pointer': !handleBtn && !darkValue ? 'bg-black rounded-full p-2  cursor-pointer ' : 'bg-gray-400 rounded-full p-2  cursor-pointer'}>PickUp</p>
@@ -68,7 +74,7 @@ const Navbar = () => {
                          </div>
                          <ul className='p-4 pt-6 flex flex-col '>
                               <Link to='/' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaHome/> <span className='ml-2'>Home</span></Link>
-                              <Link to='bagorder' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaTruck/> <span className='ml-2'>Order</span></Link>
+                              <Link  to='bagorder' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer ' : 'hidden'}> <FaTruck/> <span className='ml-2'>Order</span></Link>
                               <Link to='/favoraite' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaHeart/> <span className='ml-2'>Favorites</span></Link>
                               <li onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaWallet/> <span className='ml-2'>Wallet</span></li>
                               <li onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <AiFillTag/> <span className='ml-2'>Promitions</span></li>

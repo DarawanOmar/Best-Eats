@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { increment , decrement ,favoraite} from './features/Count/CountSlice'
+import { increment , decrement ,favoraite} from '../features/Count/CountSlice'
 import { useDispatch , useSelector} from 'react-redux';
 import {AiOutlineStar} from 'react-icons/ai'
 import { Link } from 'react-router-dom';

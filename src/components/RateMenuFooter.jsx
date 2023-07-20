@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector  } from 'react-redux'
-import { getDatacategories } from './api/axios'
+import { getDatacategories } from '../api/axios'
 
 const RateMenuFooter = () => {
     
