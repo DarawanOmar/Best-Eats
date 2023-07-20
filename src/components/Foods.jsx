@@ -10,7 +10,14 @@ const Foods = () => {
     const { foods , isLoading} = useSelector((state)=>state.count);  
     const [filteredFoods, setFilteredFoods] = useState([]);
     const[search,setSearch] = useState('')
+    const[visibleFood,setVisibleFood] = useState(6)
 
+    const showMoreFood = ()=>{
+      setVisibleFood(prev => prev + 6)
+    }
+    const showLessFood = ()=>{
+      setVisibleFood(prev => prev - 16)
+    }
 
     useEffect(() => {
         setFilteredFoods(foods);
@@ -39,7 +46,6 @@ const Foods = () => {
         </div>
         )
     }
-    
     
 
   return (
@@ -70,10 +76,20 @@ const Foods = () => {
       </div>
 
       <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-14'>
-          {filteredFoods.map((fod)=>{
+          {filteredFoods.slice(0,visibleFood).map((fod)=>{
               return <FoodsList key={fod.id} {...fod}/>
           })}
       </div>
+      <div className='text-center pt-4'>
+        {filteredFoods.length > visibleFood &&
+        <>
+        <button  onClick={showMoreFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent font-bold  text-white  duration-500'}>Show More </button>
+        </>}
+        {filteredFoods.length < visibleFood &&
+        <>
+        <button  onClick={showLessFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent font-bold  text-white  duration-500'}>Show Less </button>
+        </>}
+        </div>
     </div>
   )
 }
