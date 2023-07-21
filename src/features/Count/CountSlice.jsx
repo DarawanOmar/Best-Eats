@@ -6,7 +6,8 @@ const initialState = {
     foods : [],
     amount : 1,
     totalPrice : 0,
-    isLoading : true
+    isLoading : true,
+    error : null
 }
 
 const url = "http://localhost:3500/data"
@@ -16,7 +17,7 @@ export const fetchData = createAsyncThunk('getFoods',
             const res = await axios(url)
             return res.data
         } catch (error) {
-            return thinkAPI.rejectWithValue(" Some Thihg Went Wrong!..")
+            return thinkAPI.rejectWithValue(`${error.message}`)
         }
     }
 ) 
@@ -75,8 +76,11 @@ const countSlice = createSlice({
             state.foods = action.payload;
             state.isLoading = false
         })
-        .addCase(fetchData.rejected,(state)=>{
+        .addCase(fetchData.rejected,(state,action)=>{
             state.isLoading = false
+            console.log(action.payload);
+            state.error = action.payload
+
         })
     }
 
@@ -84,6 +88,6 @@ const countSlice = createSlice({
 })
 
 
-
+console.log(initialState.error);
 export const {increment , decrement , totalCalculator , removeCard , favoraite , unFavoraite , filterPrice , filterType} = countSlice.actions;
 export default countSlice.reducer ;

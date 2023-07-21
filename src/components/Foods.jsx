@@ -3,21 +3,18 @@ import {  useSelector  } from 'react-redux'
 import {ScaleLoader} from 'react-spinners'
 import FoodsList from './FoodsList'
 import Search from './Search'
+import ReactPaginate from 'react-paginate'
 
 const Foods = () => {
     
     const darkValue = useSelector((state)=>state.dark.isDark);
-    const { foods , isLoading} = useSelector((state)=>state.count);  
+    const { foods , isLoading } = useSelector((state)=>state.count);  
     const [filteredFoods, setFilteredFoods] = useState([]);
     const[search,setSearch] = useState('')
-    const[visibleFood,setVisibleFood] = useState(6)
+    const[visibleFood,setVisibleFood] = useState(4)
+    const [pageNumner,setPageNumber] = useState(0);
 
-    const showMoreFood = ()=>{
-      setVisibleFood(prev => prev + 6)
-    }
-    const showLessFood = ()=>{
-      setVisibleFood(prev => prev - 16)
-    }
+   
 
     useEffect(() => {
         setFilteredFoods(foods);
@@ -46,6 +43,21 @@ const Foods = () => {
         </div>
         )
     }
+
+    // const showMoreFood = ()=>{
+    //   setVisibleFood(prev => prev + 4)
+    // }
+    // const showLessFood = ()=>{
+    //   setVisibleFood(prev => prev - 16)
+    // }
+
+    const foodPerPage = 4;
+    const pageVisited = pageNumner * foodPerPage;
+    const pageCount = Math.ceil(filteredFoods.length / foodPerPage);
+    const changePage = ({ selected }) => {
+      setPageNumber(selected);
+    }; 
+
     
 
   return (
@@ -75,21 +87,41 @@ const Foods = () => {
           </div>
       </div>
 
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-14'>
-          {filteredFoods.slice(0,visibleFood).map((fod)=>{
+
+      <div className='grid  grid-cols-2 lg:grid-cols-4 gap-6 pt-14'>
+          {filteredFoods.slice(pageVisited,pageVisited + foodPerPage).map((fod)=>{
               return <FoodsList key={fod.id} {...fod}/>
           })}
       </div>
-      <div className='text-center pt-4'>
-        {filteredFoods.length > visibleFood &&
-        <>
-        <button  onClick={showMoreFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent font-bold  text-white  duration-500'}>Show More </button>
-        </>}
-        {filteredFoods.length < visibleFood &&
-        <>
-        <button  onClick={showLessFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent font-bold  text-white  duration-500'}>Show Less </button>
-        </>}
-        </div>
+      <div>
+      <ReactPaginate
+       previousLabel={"<<"}
+       nextLabel={">>"}
+       pageCount={pageCount}
+       onPageChange={changePage}
+       disabledLinkClassName=" bg-black/20 text-gray-500  py-2 rounded-md  duration-500 cursor-pointer"
+       containerClassName="flex justify-between items-center max-w-sm mx-auto mt-10 "
+       previousLinkClassName="bg-orange-500 px-4 py-2 rounded-md text-white duration-500 cursor-pointer  "
+       nextLinkClassName="bg-orange-500 px-4 py-2 rounded-md text-white duration-500 cursor-pointer "
+       activeClassName="border-2  border-orange-500 bg-orange-500 px-4 py-1 rounded-md text-white  border-2 hover:bg-transparent hover:border-orange-500 hover:text-black duration-500 cursor-pointer"
+
+
+      />
+      </div>
+
+
+    {/* <div className='text-center pt-4'>
+      {filteredFoods.length > visibleFood &&
+      <>
+      <button  onClick={showMoreFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent   text-white  duration-500'}>Show More </button>
+      </>}
+      {filteredFoods.length === visibleFood &&
+      <>
+      <button  onClick={showLessFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent  text-white  duration-500'}>Show Less </button>
+      </>}
+      </div> */}
+     
+        
     </div>
   )
 }
