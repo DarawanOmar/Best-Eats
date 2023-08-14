@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {CgMenu  , CgClose } from 'react-icons/cg'
+import { CgClose } from 'react-icons/cg'
 import {FaShoppingCart ,FaUserFriends , FaHeart , FaTruck , FaWallet,FaHome } from 'react-icons/fa'
 import {AiFillTag} from 'react-icons/ai'
 import {MdHelp ,MdPerson} from 'react-icons/md'
@@ -9,12 +9,16 @@ import { useSelector ,useDispatch } from 'react-redux'
 import {dark , night} from '../features/Dark-Mode/DarkModeSlice'
 import { Link } from 'react-router-dom'
 
+
+
+
 const Navbar = () => {
+
+
 
      const darkValue = useSelector((state)=>state.dark.isDark);
      const amount = useSelector((state)=>state.count.amount);  
      const dispatch = useDispatch();
-
      const [handleBtn, sethandleBtn] = useState(true)
      const [nav ,setNav] = useState(false)
 
@@ -61,6 +65,11 @@ const Navbar = () => {
            </div>
         </div>
 
+
+   
+   
+
+
         { /*Mobile Menu*/ }
           <div onClick={()=> setNav(false)} className={nav ? ' bg-black/75 fixed top-0 left-0 z-10 h-screen w-full font-serif duration-300' : ''}>
                     <div className={nav && darkValue ? 'fixed top-0 left-0 bg-black text-white w-[230px] sm:w-[250px] md:w-[280px] lg:w-[300px] h-screen  duration-500 ease-in-out ': nav && !darkValue ? 'fixed top-0 left-0 bg-white text-black w-[230px] sm:w-[250px] md:w-[280px] lg:w-[300px] h-screen  duration-500 ease-in-out ' : ' fixed  left-[-100%] duration-500 ' }>
@@ -73,15 +82,15 @@ const Navbar = () => {
                               <CgClose  size={'25px'} onClick={handleNav} className='cursor-pointer'/>
                          </div>
                          <ul className='p-4 pt-6 flex flex-col '>
-                              <Link to='/' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaHome/> <span className='ml-2'>Home</span></Link>
-                              <Link  to='bagorder' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer ' : 'hidden'}> <FaTruck/> <span className='ml-2'>Order</span></Link>
-                              <Link to='/favoraite' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaHeart/> <span className='ml-2'>Favorites</span></Link>
-                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaWallet/> <span className='ml-2'>Wallet</span></li>
-                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <AiFillTag/> <span className='ml-2'>Promitions</span></li>
-                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <BsSaveFill/> <span className='ml-2'> Best One</span></li>
-                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <FaUserFriends/> <span className='ml-2'>invit Friend</span></li>
-                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <MdHelp/> <span className='ml-2'>Help</span></li>
-                              <Link to='/about' onClick={handleNav} className={nav ? 'flex items-center text-lg pt-4 cursor-pointer' : 'hidden'}> <MdPerson/> <span className='ml-2'>About Me</span></Link>
+                              <Link to='/' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]   hover:border-orange-500  ' : 'hidden'}> <FaHome /> <span className='ml-2 '>Home</span></Link>
+                              <Link  to='bagorder' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer  hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaTruck/> <span className='ml-2 '>Order</span></Link>
+                              <Link to='/favoraite' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaHeart/> <span className='ml-2 '>Favorites</span></Link>
+                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaWallet/> <span className='ml-2 '>Wallet</span></li>
+                              <Link to='/listFoods' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <AiFillTag/> <span className='ml-2 '>Promitions</span></Link>
+                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <BsSaveFill/> <span className='ml-2 '> Best One</span></li>
+                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaUserFriends/> <span className='ml-2 '>invit Friend</span></li>
+                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdHelp/> <span className='ml-2 '>Help</span></li>
+                              <Link to='/about' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdPerson/> <span className='ml-2 '>About Me</span></Link>
                          </ul>
                     </div>
           </div>

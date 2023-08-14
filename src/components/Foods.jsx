@@ -11,7 +11,7 @@ const Foods = () => {
     const { foods , isLoading } = useSelector((state)=>state.count);  
     const [filteredFoods, setFilteredFoods] = useState([]);
     const[search,setSearch] = useState('')
-    const[visibleFood,setVisibleFood] = useState(4)
+    // const[visibleFood,setVisibleFood] = useState(4)
     const [pageNumner,setPageNumber] = useState(0);
 
    
@@ -51,7 +51,7 @@ const Foods = () => {
     //   setVisibleFood(prev => prev - 16)
     // }
 
-    const foodPerPage = 4;
+    const foodPerPage = 8;
     const pageVisited = pageNumner * foodPerPage;
     const pageCount = Math.ceil(filteredFoods.length / foodPerPage);
     const changePage = ({ selected }) => {
@@ -62,7 +62,7 @@ const Foods = () => {
 
   return (
     <div className='max-w-6xl mx-auto p-4 font-serif space-y-4 '>
-      <h1 className='text-center text-2xl md:text-4xl font-bold text-orange-500'> Top Rated Menu Items</h1>
+      <h1 className='text-center text-2xl md:text-4xl font-bold text-orange-500 border-b-2 rounded-full border-orange-500'> Top Rated Menu Items</h1>
       <Search  search={search} setSearch={setSearch}/>
       <div className='md:flex md:justify-between '>
           <div className='p-3 border-b-2 border-orange-500 shadow-2xl'>

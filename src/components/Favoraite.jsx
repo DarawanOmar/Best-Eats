@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector  } from 'react-redux'
 import FavoraiteListFood from './FavoraiteListFood';
 import { Link } from 'react-router-dom';
+import {motion} from 'framer-motion'
 
 
 const Favoraite = () => {
@@ -10,7 +11,20 @@ const Favoraite = () => {
     const filterFavoraite = foods.filter((food)=> food.favoraite === true)
 
   return (
-    <div className={darkValue ? 'max-w-6xl mx-auto p-4 h-screen font-serif' : 'max-w-6xl mx-auto p-4 font-serif'}>
+    <motion.div
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{
+      duration: 0.3,
+      ease: [0, 0.71, 0.2, 1.01],
+      scale: {
+        type: "spring",
+        damping: 5,
+        stiffness: 100,
+        restDelta: 0.001}
+    }}
+
+    className={darkValue ? 'max-w-6xl mx-auto p-4 h-screen font-serif' : 'max-w-6xl mx-auto p-4 font-serif'}>
         {filterFavoraite.length > 0 ? (
           <div>
             <h1 className='text-center text-orange-500 text-xl md:text-2xl lg:text-4xl font-bold font-serif'> Favoraite Foods Here!..</h1>
@@ -28,7 +42,7 @@ const Favoraite = () => {
         </div>
         )}
         
-    </div>
+    </motion.div>
   )
 }
 

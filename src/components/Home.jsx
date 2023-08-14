@@ -5,6 +5,8 @@ import Foods from './Foods'
 import RateFood from './RateFood'
 import RateMenuFooter from './RateMenuFooter'
 import {  useSelector  } from 'react-redux'
+import Footer from "./Footer";
+
 
 const Home = () => {
 
@@ -14,11 +16,12 @@ const Home = () => {
     <div>
       {!error && 
       <>
-        <Hero/>
-        <Cards/>
-        <Foods/>
-        <RateFood/>
-        <RateMenuFooter/>
+        <div><Hero/></div>
+        <div><Cards/></div>
+        <div><Foods/></div>
+        <div><RateFood/></div>
+        <div><RateMenuFooter/></div>
+        <div> <Footer/> </div>
         </>}
         {error && <>
           <div className='text-center text-2xl font-bold text-red-500 mt-48'>
