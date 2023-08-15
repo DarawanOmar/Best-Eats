@@ -4,7 +4,7 @@ import { BrowserRouter  } from "react-router-dom";
 import { useSelector  , useDispatch} from 'react-redux'
 import { fetchData ,totalCalculator} from "./features/Count/CountSlice";
 import Routess from "./components/Routes";
-import { FoodContextProvider } from "./context/FoodContext";
+import { AnimelContextProvider } from "./context/AnimelContext";
 
 
 function App() {
@@ -24,12 +24,12 @@ function App() {
   return (
     <div
     className={darkValue ? 'bg-black text-white duration-700 ' : 'bg-white text-black duration-700'}>  
-    <FoodContextProvider>
+    <AnimelContextProvider>
         <BrowserRouter>
           <Navbar/>
           <Routess/>
         </BrowserRouter>     
-      </FoodContextProvider>  
+      </AnimelContextProvider>  
     </div>
   );
 }

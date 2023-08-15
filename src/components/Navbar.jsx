@@ -8,6 +8,7 @@ import {BsSun ,BsMoon ,BsSaveFill } from 'react-icons/bs';
 import { useSelector ,useDispatch } from 'react-redux'
 import {dark , night} from '../features/Dark-Mode/DarkModeSlice'
 import { Link } from 'react-router-dom'
+import { useAnimelContext } from '../context/AnimelContext'
 
 
 
@@ -21,6 +22,7 @@ const Navbar = () => {
      const dispatch = useDispatch();
      const [handleBtn, sethandleBtn] = useState(true)
      const [nav ,setNav] = useState(false)
+     const {totalOrder} = useAnimelContext()
 
      const handleNav = () => {
           setNav(!nav)
@@ -60,7 +62,7 @@ const Navbar = () => {
 
                <Link to='bagorder' className='relative flex items-center bg-black text-white rounded-full pl-4 pr-5 md:pr-7 py-2 space-x-1'>
                     <FaShoppingCart size={'20px'}/>
-                    <span className={amount > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white rounded-full px-[7px] md:px-2' : 'hidden'}>{amount}</span>
+                    <span className={amount  > 0 || totalOrder > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white rounded-full px-[7px] md:px-2' : 'hidden'}>{amount + totalOrder}</span>
                </Link>
            </div>
         </div>
@@ -86,7 +88,7 @@ const Navbar = () => {
                               <Link  to='bagorder' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer  hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaTruck/> <span className='ml-2 '>Order</span></Link>
                               <Link to='/favoraite' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaHeart/> <span className='ml-2 '>Favorites</span></Link>
                               <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaWallet/> <span className='ml-2 '>Wallet</span></li>
-                              <Link to='/listFoods' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <AiFillTag/> <span className='ml-2 '>Promitions</span></Link>
+                              <Link to='/animels' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <AiFillTag/> <span className='ml-2 '>Animels</span></Link>
                               <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <BsSaveFill/> <span className='ml-2 '> Best One</span></li>
                               <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaUserFriends/> <span className='ml-2 '>invit Friend</span></li>
                               <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdHelp/> <span className='ml-2 '>Help</span></li>

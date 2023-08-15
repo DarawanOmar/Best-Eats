@@ -6,8 +6,7 @@ import Favoraite from "../components/Favoraite";
 import About from "../components/About";
 import Foods from "../components/Foods";
 import FoodPage from "../components/FoodPage";
-import ListFoods from '../pages/ListFoods';
-
+import Animles from '../pages/Animles';
 import {AnimatePresence} from 'framer-motion'
 
 const Routess = () => {
@@ -22,7 +21,7 @@ const Routess = () => {
           <Route path="/about" element={<About />} />
           <Route path="/food" element={<Foods />} />
           <Route path="/foodpage/:id" element={<FoodPage />} />
-          <Route path='/listFoods' element={<ListFoods/>}/>
+          <Route path='/animels' element={<Animles/>}/>
         </Routes>
       </AnimatePresence>
     </div>
