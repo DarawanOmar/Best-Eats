@@ -17,7 +17,7 @@ const FavoraiteListFood = ({id,name,count,image,price}) => {
                 <button disabled={count<1} onClick={()=> {dispatch(decrement({id}))}} className={darkValue ? 'bg-white text-black rounded-md px-2 font-bold  md:text-xl ' : 'bg-slate-300 rounded-md px-2 font-bold  md:text-xl '}>-</button>
                 <button onClick={()=> dispatch(increment({id}))} className={darkValue ? 'bg-white text-black rounded-md px-2 font-bold  md:text-xl ' : 'bg-slate-300 rounded-md px-2 font-bold  md:text-xl '}>+</button>
             </div>
-            <span className='font-bold text-xl font-mono'>{count}</span>
+            <span className='font-bold text-xl font-mono flex items-center'><span className='text-xs text-gray-500'>x</span>{count}</span>
         </div>
         <h1 className='bg-orange-500 text-center text-white rounded-md px-1 font-mono'>{`${price}$`}</h1>
     </div>

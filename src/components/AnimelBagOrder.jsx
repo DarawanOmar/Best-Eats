@@ -1,6 +1,5 @@
 import React from 'react'
 import { useAnimelContext } from '../context/AnimelContext'
-import { formatCurrency } from '../hook/formatCurrency'
 import { useSelector } from 'react-redux'
 
 const AnimelBagOrder = ({id,quantity}) => {
@@ -23,7 +22,7 @@ const AnimelBagOrder = ({id,quantity}) => {
                 </div>
                 <h1 className='bg-orange-500 text-center text-white rounded-md px-1 font-mono'>{`${animelExists.price}$`}</h1>
                 <div>
-                    <h1 className='text-center font-bold text-sm my-2'>Total Price : {animelExists.price * qty}$</h1>
+                    <h1 className='text-center font-bold text-sm my-2'>Total Price : {animelExists.price * quantity}$</h1>
                 </div>
             </div>
             <button onClick={()=> removeAnimelFromCarts(id)} className='absolute bg-black text-white rounded-md px-2 top-0 right-0'>X</button>

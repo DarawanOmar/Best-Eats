@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import {CgFacebook, CgInstagram , CgPhone , CgGitBranch, CgTwitter } from 'react-icons/cg'
+import {CgFacebook, CgInstagram , CgPhone , CgTwitter } from 'react-icons/cg'
 import {FaGithub} from 'react-icons/fa'
 import {TiMessage} from 'react-icons/ti'
 import {FaHandPointDown} from 'react-icons/fa'

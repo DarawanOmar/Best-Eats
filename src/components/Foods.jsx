@@ -4,16 +4,17 @@ import {ScaleLoader} from 'react-spinners'
 import FoodsList from './FoodsList'
 import Search from './Search'
 import ReactPaginate from 'react-paginate'
-import { Link } from 'react-router-dom'
 
 const Foods = () => {
-    
+
+    const {error} = useSelector((state)=>state.count);  
     const darkValue = useSelector((state)=>state.dark.isDark);
     const { foods , isLoading } = useSelector((state)=>state.count);  
     const [filteredFoods, setFilteredFoods] = useState([]);
     const[search,setSearch] = useState('')
     // const[visibleFood,setVisibleFood] = useState(4)
     const [pageNumner,setPageNumber] = useState(0);
+    
 
    
 
@@ -62,13 +63,14 @@ const Foods = () => {
     
 
   return (
-    <div className='max-w-6xl mx-auto p-4 font-serif space-y-4 '>
-      <h1 className='text-center text-2xl md:text-4xl font-bold text-orange-500 border-b-2 rounded-full border-orange-500'> Top Rated Menu Items</h1>
-      <Search  search={search} setSearch={setSearch}/>
-      <div>
-        <Link to='/foods'> Foods</Link>
-        <Link to='/animels'> Animels</Link>
+    <div className='max-w-6xl mx-auto p-3 font-serif space-y-4'>
+      <div className={darkValue ? 'sticky  top-16 z-10 bg-black duration-500': 'sticky  top-16 z-10 bg-white duration-500'}>
+        <h1 className='text-center text-2xl md:text-4xl font-bold text-orange-500 border-b-2 rounded-full border-orange-500'> Top Rated Menu Items</h1>
+        <div className='py-4'>
+          <Search  search={search} setSearch={setSearch}/>
+        </div>
       </div>
+      
       <div className='md:flex md:justify-between '>
           <div className='p-3 border-b-2 border-orange-500 shadow-2xl'>
               <h1 className='font-bold pb-4 text-xl'> Filter Type </h1>
@@ -93,25 +95,35 @@ const Foods = () => {
       </div>
 
 
-      <div className='grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-14'>
-          {filteredFoods.slice(pageVisited,pageVisited + foodPerPage).map((fod)=>{
-              return <FoodsList key={fod.id} {...fod}/>
-          })}
-      </div>
       <div>
-      <ReactPaginate
-       previousLabel={"<<"}
-       nextLabel={">>"}
-       pageCount={pageCount}
-       onPageChange={changePage}
-       disabledLinkClassName=" bg-black/20 text-gray-500  py-2 rounded-md  duration-500 cursor-pointer"
-       containerClassName="flex justify-between items-center max-w-sm mx-auto mt-10 "
-       previousLinkClassName="bg-orange-500 px-4 py-2 rounded-md text-white duration-500 cursor-pointer  "
-       nextLinkClassName="bg-orange-500 px-4 py-2 rounded-md text-white duration-500 cursor-pointer "
-       activeClassName="border-2  border-orange-500 bg-orange-500 px-4 py-1 rounded-md text-white  border-2 hover:bg-transparent hover:border-orange-500 hover:text-black duration-500 cursor-pointer"
-
-
-      />
+      {!error && 
+      <>
+        <div className='grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-3 pt-14'>
+            {filteredFoods.slice(pageVisited,pageVisited + foodPerPage).map((fod)=>{
+                return <FoodsList key={fod.id} {...fod}/>
+            })}
+        </div>
+        <div>
+        <ReactPaginate
+         previousLabel={"<<"}
+         nextLabel={">>"}
+         pageCount={pageCount}
+         onPageChange={changePage}
+         disabledLinkClassName=" bg-black/20 text-gray-500  py-2 rounded-md  duration-500 cursor-pointer"
+         containerClassName="flex justify-between items-center max-w-sm mx-auto mt-10 "
+         previousLinkClassName="bg-orange-500 px-4 py-2 rounded-md text-white duration-500 cursor-pointer  "
+         nextLinkClassName="bg-orange-500 px-4 py-2 rounded-md text-white duration-500 cursor-pointer "
+         activeClassName="border-2  border-orange-500 bg-orange-500 px-4 py-1 rounded-md text-white  border-2 hover:bg-transparent hover:border-orange-500 hover:text-black duration-500 cursor-pointer"
+        />
+        </div>
+        </>
+        }
+        {error && <>
+          <div className='text-center text-2xl font-bold text-red-500 mt-48'>
+            <h1> You Have An Error</h1>
+            <h1> {error}</h1>
+          </div>
+        </>}
       </div>
 
 

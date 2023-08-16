@@ -18,7 +18,15 @@ export const AnimelContextProvider = ({ children }) => {
       category: faker.animal.type()
   
   }));
-
+  //   const fooods = Array(20).fill().map(() => ({
+  //     id: faker.number.int(),
+  //     username: faker.internet.userName(),
+  //     price: faker.commerce.price(),
+  //     image: faker.image.urlLoremFlickr({ category: 'city' }),
+  //     discription: faker.lorem.lines(),
+  //     category: faker.location.country()
+  
+  // }));
   const[animalCarts,setAnimalCarts] = useState([])
 
   const getQuantityByID = (id) => {
@@ -28,7 +36,7 @@ export const AnimelContextProvider = ({ children }) => {
   function increaseAnimelCartQuantity(id) { //id = 1
     setAnimalCarts(currItems => {
       if (currItems.find(item => item.id === id) == null) {
-        return [...currItems, { id: id, quantity: 1 }]
+        return [...currItems, { id: id, quantity: 1, favoraite: false }]
       } else {
         return currItems.map(item => {
           if (item.id === id) {
@@ -43,7 +51,7 @@ export const AnimelContextProvider = ({ children }) => {
 
   function decreaseAnimelCartQuantity(id) { //id = 1
     setAnimalCarts(currItems => {
-      if (currItems.find(item => item.id === id)?.quantity == 1) {
+      if (currItems.find(item => item.id === id)?.quantity === 1) {
         return currItems.filter(anemal=>anemal.id !== id)
       } else {
         return currItems.map(item => {
@@ -63,6 +71,22 @@ export const AnimelContextProvider = ({ children }) => {
     })
   }
 
+  function addToFavoraite(id){
+    setAnimalCarts(currItems => {
+      if (currItems.find(item => item.id === id) == null) {
+        return [...currItems, { id:id, quantity: undefined, favoraite: true }]
+      } else {
+        return currItems.map(item => {
+          if (item.id === id) {
+            return { ...item, favoraite:!item.favoraite }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+  }
+
  
     const totalOrder = animalCarts.reduce((total,animelCart)=>{ return total + animelCart.quantity } , 0 )
   
@@ -72,7 +96,18 @@ export const AnimelContextProvider = ({ children }) => {
     },0)
 
     return (
-        <AnimelContext.Provider value={{ animal, animalCarts, totolPrice, totalOrder,getQuantityByID , increaseAnimelCartQuantity, decreaseAnimelCartQuantity, removeAnimelFromCarts }}>
+        <AnimelContext.Provider value={{ 
+          // fooods,
+          animal, 
+          animalCarts, 
+          totolPrice, 
+          totalOrder,
+          getQuantityByID , 
+          increaseAnimelCartQuantity, 
+          decreaseAnimelCartQuantity, 
+          removeAnimelFromCarts,
+          addToFavoraite 
+          }}>
             {children}
         </AnimelContext.Provider>
     )
