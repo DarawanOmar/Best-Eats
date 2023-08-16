@@ -15,14 +15,11 @@ import { useAnimelContext } from '../context/AnimelContext'
 
 const Navbar = () => {
 
-
-
      const darkValue = useSelector((state)=>state.dark.isDark);
-     const amount = useSelector((state)=>state.count.amount);  
      const dispatch = useDispatch();
      const [handleBtn, sethandleBtn] = useState(true)
      const [nav ,setNav] = useState(false)
-     const {totalOrder} = useAnimelContext()
+     const {totalOrder, totalOrderFood} = useAnimelContext()
 
      const handleNav = () => {
           setNav(!nav)
@@ -62,7 +59,7 @@ const Navbar = () => {
 
                <Link to='bagorder' className='relative flex items-center bg-black text-white rounded-full pl-4 pr-5 md:pr-7 py-2 space-x-1'>
                     <FaShoppingCart size={'20px'}/>
-                    <span className={amount  > 0 || totalOrder > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white rounded-full px-[7px] md:px-2' : 'hidden'}>{amount + totalOrder}</span>
+                    <span className={totalOrderFood  > 0 || totalOrder > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white rounded-full px-[7px] md:px-2' : 'hidden'}>{totalOrderFood + totalOrder}</span>
                </Link>
            </div>
         </div>

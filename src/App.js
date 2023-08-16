@@ -1,24 +1,22 @@
 import Navbar from "./components/Navbar";
-import { useEffect } from "react";
 import { BrowserRouter  } from "react-router-dom";
-import { useSelector  , useDispatch} from 'react-redux'
-import { fetchData ,totalCalculator} from "./features/Count/CountSlice";
+import { useSelector  } from 'react-redux'
 import Routess from "./components/Routes";
 import { AnimelContextProvider } from "./context/AnimelContext";
 
 
 function App() {
 
-  const dispatch = useDispatch()
-  const {foods} = useSelector((state)=> state.count)
+  // const dispatch = useDispatch()
+  // const {foods} = useSelector((state)=> state.count)
 
-  useEffect(()=>{ 
-      dispatch(fetchData())   
-  },[])
+  // useEffect(()=>{ 
+  //     dispatch(fetchData())   
+  // },[])
 
-  useEffect(()=>{
-    dispatch(totalCalculator())
-  },[foods])
+  // useEffect(()=>{
+  //   dispatch(totalCalculator())
+  // },[foods])
   const darkValue = useSelector((state)=>state.dark.isDark);
 
   return (

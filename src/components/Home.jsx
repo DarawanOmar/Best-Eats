@@ -8,20 +8,14 @@ import Footer from "./Footer";
 
 
 const Home = () => {
-
-
   return (
     <div>
-      
-      <>
-        <div><Hero/></div>
-        <div><Cards/></div>
-        <div><Foods/></div>
-        <div><RateFood/></div>
-        <div><RateMenuFooter/></div>
-        <div> <Footer/> </div>
-        </>
-        
+      <Hero/>
+      <Cards/>
+      <Foods/>
+      <RateFood/>
+      <RateMenuFooter/>
+      <Footer/>
     </div>
   )
 }

@@ -1,19 +1,20 @@
 import React, { useState ,useEffect } from 'react'
 import {  useSelector  } from 'react-redux'
-import {ScaleLoader} from 'react-spinners'
+// import {ScaleLoader} from 'react-spinners'
 import FoodsList from './FoodsList'
 import Search from './Search'
 import ReactPaginate from 'react-paginate'
+import { useAnimelContext } from '../context/AnimelContext'
 
 const Foods = () => {
 
     const darkValue = useSelector((state)=>state.dark.isDark);
-    const { foods , isLoading, error } = useSelector((state)=>state.count);  
+    // const { isLoading, error } = useSelector((state)=>state.count);  
     const [filteredFoods, setFilteredFoods] = useState([]);
     const[search,setSearch] = useState('')
     // const[visibleFood,setVisibleFood] = useState(4)
     const [pageNumner,setPageNumber] = useState(0);
-    
+    const {foods} = useAnimelContext()
 
    
 
@@ -36,14 +37,14 @@ const Foods = () => {
         setFilteredFoods(foods);
       };
 
-    if(isLoading){
-        return(
-        <div className='text-center '>
-            <h1 className='text-center py-6 text-4xl font-bold '> Loading...</h1>
-            <ScaleLoader width={'2rem'} height={'6rem'}  color='orange'/>
-        </div>
-        )
-    }
+    // if(isLoading){
+    //     return(
+    //     <div className='text-center '>
+    //         <h1 className='text-center py-6 text-4xl font-bold '> Loading...</h1>
+    //         <ScaleLoader width={'2rem'} height={'6rem'}  color='orange'/>
+    //     </div>
+    //     )
+    // }
 
     // const showMoreFood = ()=>{
     //   setVisibleFood(prev => prev + 4)
@@ -95,7 +96,6 @@ const Foods = () => {
 
 
       <div>
-      {!error && 
       <>
         <div className='grid  grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-3 pt-14'>
             {filteredFoods.slice(pageVisited,pageVisited + foodPerPage).map((fod)=>{
@@ -116,13 +116,7 @@ const Foods = () => {
         />
         </div>
         </>
-        }
-        {error && <>
-          <div className='text-center text-2xl font-bold text-red-500 mt-48'>
-            <h1> You Have An Error</h1>
-            <h1> {error}</h1>
-          </div>
-        </>}
+        
       </div>
 
 

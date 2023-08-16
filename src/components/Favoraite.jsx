@@ -9,10 +9,9 @@ import FavoraiteListAnimel from './FavoraiteListAnimel';
 
 const Favoraite = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);
-    const { foods } = useSelector((state)=>state.count);  
-    const filterFavoraite = foods.filter((food)=> food.favoraite === true)
-    const {animalCarts} = useAnimelContext()
+    const {animalCarts, foodCarts} = useAnimelContext()
     const listFavoraiteAnimel = animalCarts.filter( animel => animel.favoraite === true)
+    const listFavoraiteFood = foodCarts.filter( food => food.favoraite === true)
 
   return (
     <motion.div
@@ -29,11 +28,11 @@ const Favoraite = () => {
     }}
 
     className={darkValue ? 'max-w-6xl mx-auto p-4 h-screen font-serif' : 'max-w-6xl mx-auto p-4 font-serif'}>
-        {filterFavoraite.length > 0  && listFavoraiteAnimel.length > 0 ? (
+        {listFavoraiteFood.length > 0  && listFavoraiteAnimel.length > 0 ? (
           <div>
             <h1 className='text-center text-orange-500 text-xl md:text-2xl lg:text-4xl font-bold font-serif'> Favoraite Foods Here!..</h1>
             <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6'>
-                {filterFavoraite.map((food)=>(
+                {listFavoraiteFood.map((food)=>(
                     <FavoraiteListFood key={food.id} {...food}/>
                 ))}
             </div>
@@ -44,11 +43,11 @@ const Favoraite = () => {
                 ))}
             </div>
           </div>
-        ) : filterFavoraite.length > 0 ? (
+        ) : listFavoraiteFood.length > 0 ? (
           <div>
             <h1 className='text-center text-orange-500 text-xl md:text-2xl lg:text-4xl font-bold font-serif'> Favoraite Foods Here!..</h1>
             <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6'>
-                {filterFavoraite.map((food)=>(
+                {listFavoraiteFood.map((food)=>(
                     <FavoraiteListFood key={food.id} {...food}/>
                 ))}
             </div>

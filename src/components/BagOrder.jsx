@@ -9,10 +9,7 @@ import AnimelBagOrder from './AnimelBagOrder';
 
 const BagOrder = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);
-    const { foods } = useSelector((state) => state.count);
-    const total = useSelector((state) => state.count.totalPrice);
-    const foodFilter = foods.filter((food) => food.count > 0);
-    const {animalCarts, totalOrder, totolPrice} = useAnimelContext()
+    const {animalCarts, totalOrder, totolPrice , foodCarts, totalOrderFood,totolPriceFood} = useAnimelContext()
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -27,13 +24,13 @@ const BagOrder = () => {
                 restDelta: 0.001}
             }}
         className={darkValue ? 'max-w-6xl mx-auto font-serif h-screen' : 'max-w-6xl mx-auto font-serif'}>
-            {foodFilter.length > 0 && totalOrder > 0? (
+            {totalOrderFood > 0 && totalOrder > 0? (
                 <div>
                     <h1 className='text-center text-2xl md:text-3xl lg:text-4xl text-orange-500 font-bold pb-2 border-b-2 rounded-full border-orange-500 mb-2'> Your Orders Here!..</h1>
-                    <h1 className={darkValue ? 'text-center font-bold text-white text-2xl  ' : ' text-center font-bold text-2xl'}>Total Price Food : {`${total} $`}</h1>
+                    <h1 className={darkValue ? 'text-center font-bold text-white text-2xl  ' : ' text-center font-bold text-2xl'}>Total Price Food : {`${totolPriceFood} $`}</h1>
 
                     <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
-                        {foodFilter.map((food) => (
+                        {foodCarts.map((food) => (
                             <FoodBagOrder key={food.id} {...food} />
                             ))}
                     </div>
@@ -45,12 +42,12 @@ const BagOrder = () => {
                 </div>
                  
                 </div>
-            ):foodFilter.length > 0? (
+            ):totalOrderFood > 0? (
                 <div>
                     <h1 className='text-center text-2xl md:text-3xl lg:text-4xl text-orange-500 font-bold pb-2 border-b-2 rounded-full border-orange-500'> Your Orders Here!..</h1>
-                    <h1 className={darkValue ? 'text-center font-bold text-white text-2xl  ' : ' text-center font-bold text-2xl'}>Total Price Food : {`${total} $`}</h1>
+                    <h1 className={darkValue ? 'text-center font-bold text-white text-2xl  ' : ' text-center font-bold text-2xl'}>Total Price Food : {`${totolPriceFood} $`}</h1>
                     <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
-                        {foodFilter.map((food) => (
+                        {foodCarts.map((food) => (
                             <FoodBagOrder key={food.id} {...food} />
                         ))}
                     </div>

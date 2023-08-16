@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector  } from 'react-redux'
-import { getDatacategories } from '../api/axios'
+import { useAnimelContext } from '../context/AnimelContext'
+// import { getDatacategories } from '../api/axios'
 
 const RateMenuFooter = () => {
     
-  const [categories , setCategories] = useState([])
-  useEffect(()=>{
-    getDatacategories().then(json => setCategories(json))
-  },[])
+  // const [categories , setCategories] = useState([])
+  // useEffect(()=>{
+  //   getDatacategories().then(json => setCategories(json))
+  // },[])
   const darkValue = useSelector((state)=>state.dark.isDark);
-  
+  const {categories} = useAnimelContext()
 
   return (
     <div className='max-w-6xl mx-auto p-4 font-serif '>
