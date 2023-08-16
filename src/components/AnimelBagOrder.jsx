@@ -10,7 +10,7 @@ const AnimelBagOrder = ({id,quantity}) => {
   return (
     <div className=''>
         <div  className={darkValue ? 'hover:scale-105 rounded-lg cursor-pointer duration-300 border border-orange-500 relative' : ' relative hover:scale-105 rounded-lg cursor-pointer duration-300'} >
-            <img className='h-[150px] w-full  object-cover rounded-t-xl' src={animelExists.image} alt={animelExists.name} />
+            <img className='h-[100px] w-full  object-cover rounded-t-xl' src={animelExists.image} alt={animelExists.name} />
             <h1 className='text-center font-bold pt-2'>{animelExists.name}</h1>
             <div className='flex flex-col  shadow-xl p-2 rounded-b-lg'>
                 <div className='flex justify-between items-center py-2'>

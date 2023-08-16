@@ -98,7 +98,7 @@ const Foods = () => {
       <div>
       {!error && 
       <>
-        <div className='grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-3 pt-14'>
+        <div className='grid  grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-3 pt-14'>
             {filteredFoods.slice(pageVisited,pageVisited + foodPerPage).map((fod)=>{
                 return <FoodsList key={fod.id} {...fod}/>
             })}
