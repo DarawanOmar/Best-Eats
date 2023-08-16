@@ -19,8 +19,8 @@ const AnimelBagOrder = ({id,quantity}) => {
                         <button disabled={qty<1} onClick={()=> increaseAnimelCartQuantity(id)} className={darkValue ? 'bg-white text-black rounded-md px-2 font-bold  md:text-xl ' : 'bg-slate-300 rounded-md px-2 font-bold  md:text-xl '}>+</button>
                     </div>
                     <span className='font-bold text-xl font-mono flex items-center'><span className='text-sm '>x</span>{qty}</span>
-                </div>
                 <h1 className='bg-orange-500 text-center text-white rounded-md px-1 font-mono'>{`${animelExists.price}$`}</h1>
+                </div>
                 <div>
                     <h1 className='text-center font-bold text-sm my-2'>Total Price : {animelExists.price * quantity}$</h1>
                 </div>

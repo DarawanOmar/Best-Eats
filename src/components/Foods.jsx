@@ -7,9 +7,8 @@ import ReactPaginate from 'react-paginate'
 
 const Foods = () => {
 
-    const {error} = useSelector((state)=>state.count);  
     const darkValue = useSelector((state)=>state.dark.isDark);
-    const { foods , isLoading } = useSelector((state)=>state.count);  
+    const { foods , isLoading, error } = useSelector((state)=>state.count);  
     const [filteredFoods, setFilteredFoods] = useState([]);
     const[search,setSearch] = useState('')
     // const[visibleFood,setVisibleFood] = useState(4)

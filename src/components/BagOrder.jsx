@@ -29,7 +29,7 @@ const BagOrder = () => {
         className={darkValue ? 'max-w-6xl mx-auto font-serif h-screen' : 'max-w-6xl mx-auto font-serif'}>
             {foodFilter.length > 0 && totalOrder > 0? (
                 <div>
-                    <h1 className='text-center text-2xl md:text-3xl lg:text-4xl text-orange-500 font-bold pb-2 border-b-2 rounded-full border-orange-500'> Your Orders Here!..</h1>
+                    <h1 className='text-center text-2xl md:text-3xl lg:text-4xl text-orange-500 font-bold pb-2 border-b-2 rounded-full border-orange-500 mb-2'> Your Orders Here!..</h1>
                     <h1 className={darkValue ? 'text-center font-bold text-white text-2xl  ' : ' text-center font-bold text-2xl'}>Total Price Food : {`${total} $`}</h1>
 
                     <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
