@@ -12,7 +12,7 @@ export const AnimelContextProvider = ({ children }) => {
     const animal = Array(20).fill().map(() => ({
       id: faker.number.int(),
       username: faker.internet.userName(),
-      price: faker.commerce.price(),
+      price: faker.number.int({ min: 10, max: 100 }),
       image: faker.image.urlLoremFlickr({ category: 'animals' }),
       discription: faker.lorem.lines(),
       category: faker.animal.type()
@@ -74,7 +74,7 @@ export const AnimelContextProvider = ({ children }) => {
   function addToFavoraite(id){
     setAnimalCarts(currItems => {
       if (currItems.find(item => item.id === id) == null) {
-        return [...currItems, { id:id, quantity: undefined, favoraite: true }]
+        return [...currItems, { id:id, quantity: null , favoraite: true }]
       } else {
         return currItems.map(item => {
           if (item.id === id) {
