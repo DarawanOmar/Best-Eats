@@ -30,8 +30,8 @@ const Animles = () => {
 
   return (
 
-    <div className='max-w-6xl mx-auto'>
-      <div className={darkValue ? 'sticky top-16 z-10 bg-black duration-500' : 'sticky top-16 z-10 bg-white duration-500'}>
+    <div className='max-w-6xl mx-auto min-h-screen'>
+      <div className={darkValue ? 'sticky top-16 z-10 bg-black duration-500 ' : 'sticky top-16 z-10 bg-white duration-500'}>
         <h1 className='text-center text-2xl md:text-4xl font-bold text-orange-500 border-b-2 rounded-full border-orange-500 pb-2 '> Top Rated Menu Items</h1>
         <h1 className='md:my-3 p-4  '> <Search search={search} setSearch={setSearch} /> </h1>
       </div>

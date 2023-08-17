@@ -27,7 +27,7 @@ const Favoraite = () => {
         restDelta: 0.001}
     }}
 
-    className={darkValue ? 'max-w-6xl mx-auto p-4 h-screen font-serif' : 'max-w-6xl mx-auto p-4 font-serif'}>
+    className={darkValue ? 'max-w-6xl mx-auto p-4 min-h-screen font-serif' : 'max-w-6xl mx-auto p-4 font-serif'}>
         {listFavoraiteFood.length > 0  && listFavoraiteAnimel.length > 0 ? (
           <div>
             <h1 className='text-center text-orange-500 text-xl md:text-2xl lg:text-4xl font-bold font-serif'> Favoraite Foods Here!..</h1>

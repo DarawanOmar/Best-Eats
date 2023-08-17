@@ -60,7 +60,7 @@ const Navbar = () => {
 
                <Link to='bagorder' className='relative flex items-center bg-black text-white rounded-full pl-4 pr-5 md:pr-7 py-2 space-x-1'>
                     <FaShoppingCart size={'20px'}/>
-                    <span className={totalOrderFood  > 0 || totalOrder > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white rounded-full px-[7px] md:px-2' : 'hidden'}>{totalOrderFood + totalOrder}</span>
+                    <span className={totalOrderFood  > 0 || totalOrder > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white pr-1 max-w-max rounded-full ' : 'hidden'}>{totalOrderFood + totalOrder}</span>
                </Link>
            </div>
         </div>

@@ -1,8 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import ModelOrder from './ModelOrder';
+import { useState } from 'react';
 
 const Location = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);
+    const [openDailogBox, setOpenDailogBox] = useState(false)
+    const handleOpenDailogBox = () => {
+        setOpenDailogBox(prev => !prev)
+    }
   return (
     <div className={darkValue ? "max-w-6xl mx-auto bg-black md:h-screen duration-300 pt-4 md:pt-16" : "max-w-6xl mx-auto bg-white duration-300 pt-4 md:pt-16"}>
       <div className=' grid grid-rows-2 md:grid-cols-2 gap-6 p-4'>
@@ -25,8 +31,10 @@ const Location = () => {
           </div>    
       </div>
         <div className='p-6 flex justify-end'>
-            <h1 className='btn-order btn-hover mt-64 md:mt-14 lg:mt-44 mb-14 text-center text-xl max-w-max'> Order </h1>
+            <button onClick={handleOpenDailogBox} className='btn-order btn-hover mt-64 md:mt-14 lg:mt-44 mb-14 text-center text-xl max-w-max'>Order</button>
         </div>
+        <div>{openDailogBox ? <ModelOrder setOpenDailogBox={setOpenDailogBox} /> : ""}</div>
+
     </div>
   );
 }

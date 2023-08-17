@@ -28,11 +28,11 @@ const BagOrder = () => {
                 stiffness: 100,
                 restDelta: 0.001}
             }}
-        className={darkValue ? 'max-w-6xl mx-auto font-serif ' : 'max-w-6xl mx-auto font-serif bg-white'}>
+        className={darkValue ? 'max-w-6xl mx-auto font-serif min-h-screen ' : 'max-w-6xl mx-auto font-serif '}>
             {totalOrderFood > 0 && totalOrder > 0 ? (
                 <div className=''>
                     <h1 className='text-center text-2xl md:text-3xl lg:text-4xl text-orange-500 font-bold pb-2 border-b-2 rounded-full border-orange-500 mb-2'> Your Orders Here!..</h1>
-                    <div className={darkValue ? 'flex justify-between items-center sticky z-10 bg-black top-[68px] py-4 border-x-2 border-orange-500' : 'flex sticky justify-between items-center z-10 bg-white top-[68px] py-4'}>
+                    <div className={darkValue ? 'flex justify-between items-center sticky z-10 bg-black top-[8px] py-4 border-x-2 border-orange-500' : 'flex sticky justify-between items-center z-10 bg-white top-[8px] py-4'}>
                         <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  md:text-xl lg:text-2xl  ' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl '}>Total Price Animel:{`${totolPrice} $`}</h1>
                         <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  md:text-xl lg:text-2xl  ' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl '}>Total Price Food:{`${totolPriceFood} $`}</h1>
                     </div>
