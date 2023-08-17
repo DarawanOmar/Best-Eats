@@ -12,6 +12,9 @@
   .btn-success {
     @apply bg-green-500 text-white px-4 py-1 mx-2 rounded-md font-serif
   }
+  .btn-order {
+    @apply bg-orange-500 text-white px-4 py-1 mx-2 rounded-md font-serif
+  }
 
   .btn-hover:hover{
     @apply opacity-75 duration-500

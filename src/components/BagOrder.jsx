@@ -8,8 +8,13 @@ import AnimelBagOrder from './AnimelBagOrder';
 
 
 const BagOrder = () => {
+
     const darkValue = useSelector((state)=>state.dark.isDark);
-    const {animalCarts, totalOrder, totolPrice , foodCarts, totalOrderFood,totolPriceFood} = useAnimelContext()
+    const { animalCarts, totalOrder, totolPrice, foodCarts, totalOrderFood, totolPriceFood } = useAnimelContext()
+
+    const foodCartsFilter = foodCarts.filter(food => food.quantity > 0) 
+    const animelCartsFilter = animalCarts.filter(food => food.quantity > 0) 
+
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -23,26 +28,36 @@ const BagOrder = () => {
                 stiffness: 100,
                 restDelta: 0.001}
             }}
-        className={darkValue ? 'max-w-6xl mx-auto font-serif bg-black md:h-screen' : 'max-w-6xl mx-auto font-serif bg-white'}>
+        className={darkValue ? 'max-w-6xl mx-auto font-serif ' : 'max-w-6xl mx-auto font-serif bg-white'}>
             {totalOrderFood > 0 && totalOrder > 0 ? (
-                <div>
+                <div className=''>
                     <h1 className='text-center text-2xl md:text-3xl lg:text-4xl text-orange-500 font-bold pb-2 border-b-2 rounded-full border-orange-500 mb-2'> Your Orders Here!..</h1>
-                    <div className={darkValue ? 'flex sticky z-10 bg-black top-[68px] py-4' : 'flex sticky z-10 bg-white top-[68px] py-4'}>
-                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  ' : ' text- font-bold text-sm ml-4'}>Total Price Animel:{`${totolPrice} $`}</h1>
-                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  ' : ' text- font-bold text-sm ml-4'}>Total Price Food:{`${totolPriceFood} $`}</h1>
+                    <div className={darkValue ? 'flex justify-between items-center sticky z-10 bg-black top-[68px] py-4 border-x-2 border-orange-500' : 'flex sticky justify-between items-center z-10 bg-white top-[68px] py-4'}>
+                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  md:text-xl lg:text-2xl  ' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl '}>Total Price Animel:{`${totolPrice} $`}</h1>
+                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  md:text-xl lg:text-2xl  ' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl '}>Total Price Food:{`${totolPriceFood} $`}</h1>
                     </div>
 
-                    <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
-                        {foodCarts.map((food) => (
-                            <FoodBagOrder key={food.id} {...food} />
-                            ))}
+                    <div className='p-4'>
+                        <h1 className='text-center text-orange-500 font-bold text-lg md:text-xl lg:text-2xl py-2  '>List Order Foods</h1>
+                        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4 border-2 md:border-none rounded-md'>
+                            {foodCartsFilter.map((food) => (
+                                <FoodBagOrder key={food.id} {...food} />
+                                ))}
+                        </div>
                     </div>
-                    <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
-                    {animalCarts.map((animelCart) => (
-                        <AnimelBagOrder key={animelCart.id} {...animelCart} />
-                    ))}
-                </div>
-                 
+                    <div className='p-4'>
+                        <h1 className='text-center text-orange-500 font-bold text-lg md:text-xl lg:text-2xl py-2  '>List Order Animels</h1>
+                        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4 border-2 md:border-none rounded-md '>
+                            {animelCartsFilter.map((animelCart) => (
+                                <AnimelBagOrder key={animelCart.id} {...animelCart} />
+                            ))}
+                        </div>
+                    </div>
+
+                 <div className='text-center pb-6'>
+                    <Link to='/location' className=' btn-order text-xl btn-hover '>Next</Link>
+                 </div>
+
                 </div>
             ):totalOrderFood > 0 ? (
                 <div>
@@ -50,10 +65,16 @@ const BagOrder = () => {
                     <div className={darkValue ? 'flex sticky z-10 bg-black top-[68px] py-4' : 'flex sticky z-10 bg-white top-[68px] py-4'}>
                         <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  ' : ' text- font-bold text-sm ml-4'}>Total Price Food:{`${totolPriceFood} $`}</h1>
                     </div>
-                    <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
-                        {foodCarts.map((food) => (
-                            <FoodBagOrder key={food.id} {...food} />
-                        ))}
+                    <h1 className='text-center text-orange-500 font-bold text-lg md:text-xl lg:text-2xl py-2  '>List Order Foods</h1>
+                    <div className='p-4'>
+                        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4 border-2 md:border-none rounded-md'>
+                            {foodCartsFilter.map((food) => (
+                                <FoodBagOrder key={food.id} {...food} />
+                            ))}
+                        </div>
+                    </div>
+                    <div className='text-center pb-6'>
+                        <Link to='/location' className='btn-order text-xl btn-hover'>Next</Link>
                     </div>
                  
                 </div>
@@ -63,11 +84,16 @@ const BagOrder = () => {
                 <div className={darkValue ? 'flex sticky z-10 bg-black top-[68px] py-4' : 'flex sticky z-10 bg-white top-[68px] py-4'}>
                         <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  ' : ' text- font-bold text-sm ml-4'}>Total Price Animel:{`${totolPrice} $`}</h1>
                 </div>
-            
-                <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
-                    {animalCarts.map((animelCart) => (
-                        <AnimelBagOrder key={animelCart.id} {...animelCart} />
-                    ))}
+                <h1 className='text-center text-orange-500 font-bold text-lg md:text-xl lg:text-2xl py-2  '>List Order Animels</h1>
+                <div className='p-4'>
+                    <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 p-4 border-2 md:border-none rounded-md'>
+                        {animelCartsFilter.map((animelCart) => (
+                            <AnimelBagOrder key={animelCart.id} {...animelCart} />
+                        ))}
+                    </div>
+                </div>
+                <div className='text-center pb-6'>
+                    <Link to='/location' className='btn-order text-xl btn-hover'>Next</Link>
                 </div>
             </div>
             ) : ( 

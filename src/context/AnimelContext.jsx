@@ -376,13 +376,12 @@ export const AnimelContextProvider = ({ children }) => {
   }
  
     const totalOrder = animalCarts.reduce((total,animelCart)=>{ return total + animelCart.quantity } , 0 )
-  
     const totolPrice = animalCarts.reduce((total,animelCart) => { 
       const animel = animal.find(animell => animell.id === animelCart.id)
       return total + animel.price * animelCart.quantity
     },0)
+
     const totalOrderFood = foodCarts.reduce((total,foodCart)=>{ return total + foodCart.quantity } , 0 )
-  
     const totolPriceFood = foodCarts.reduce((total,foodCart) => { 
       const food = foods.find(foodl => foodl.id === foodCart.id)
       return total + food.price * foodCart.quantity
