@@ -18,7 +18,7 @@ const ModelWarningFilter = ({setOpenModelWarning, openModelWarning}) => {
                     <div className='flex flex-col p-4'>
                         <div className='flex flex-col items-center  space-x-3'>
                             <h1  className='text-lg px-6 flex items-center font-bold text-red-500 '>Warning <span className='text-2xl'><AiFillWarning/></span></h1>
-                            <p className='text-center'> Before Filter the Food Change Filter Type To ( All )  And The Paginaition Number Change To ( 1 )  </p>
+                            <p className='text-center'> Before Filter the Food type And Price Change Filter Type To ( All )  And The Paginaition Number Change To ( 1 )  </p>
                         </div>
                     </div>
                 </div>
