@@ -41,9 +41,9 @@ const Footer = () => {
                         <Link className='underline' to={'/'}>Home</Link>
                         <Link className='underline' to={'/bagorder'}>Order</Link>
                         <Link className='underline' to={'/favoraite'}>Favorite</Link>
-                        <Link className='underline' to={'/'}>Wallet</Link>
-                        <Link className='underline' to={'/food'}>Promitions</Link>
-                        <Link className='underline' to={'/about'}>Help</Link>
+                        <Link className='underline' to={'/food'}>Foods</Link>
+                        <Link className='underline' to={'/animels'}>Animales</Link>
+                        <Link className='underline' to={'/about'}>About</Link>
                         <Link className='underline' to={'/'}>invit Friend</Link>
                     </ul>
                 </div>

@@ -10,11 +10,11 @@ const Location = () => {
         setOpenDailogBox(prev => !prev)
     }
   return (
-    <div className={darkValue ? "max-w-6xl mx-auto bg-black md:h-screen duration-300 pt-4 md:pt-16" : "max-w-6xl mx-auto bg-white duration-300 pt-4 md:pt-16"}>
+    <div className={darkValue ? "max-w-6xl mx-auto bg-black min-h-screen duration-300 pt-4 md:pt-16" : "max-w-6xl mx-auto bg-white duration-300 pt-4 md:pt-16"}>
       <div className=' grid grid-rows-2 md:grid-cols-2 gap-6 p-4'>
           <div>
             <h1 className='text-center text-xl font-bold'> Mount Your Locations</h1>
-            <p className='text-center'> choose current location for find you and fastly giving your delivery and Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga culpa, architecto magnam asperiores distinctio est enim earum numquam in molestias!</p>
+            <p className='text-center'> choose current location for find you and fastly giving your delivery!</p>
           </div>
           <div className='w-2 h-2 ml-2 pt-6 md:pt-0'>
               <iframe
@@ -31,7 +31,7 @@ const Location = () => {
           </div>    
       </div>
         <div className='p-6 flex justify-end'>
-            <button onClick={handleOpenDailogBox} className='btn-order btn-hover mt-64 md:mt-14 lg:mt-44 mb-14 text-center text-xl max-w-max'>Order</button>
+            <button onClick={handleOpenDailogBox} className='btn-order btn-hover mt-72 md:mt-44 lg:mt-44 mb-14 text-center text-xl max-w-max'>Order</button>
         </div>
         <div>{openDailogBox ? <ModelOrder setOpenDailogBox={setOpenDailogBox} /> : ""}</div>
 

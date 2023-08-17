@@ -16,7 +16,7 @@ const ListAnimels = ({id, image, price, username}) => {
     }
 
   return (
-    <div  className={darkValue ? 'hover:scale-105 rounded-lg cursor-pointer duration-300 border border-orange- relative ' : '  relative hover:scale-105 rounded-lg cursor-pointer duration-300'} >
+    <div  className={darkValue ? 'md:hover:scale-105 rounded-lg cursor-pointer duration-300 border border-orange- relative ' : '  relative md:hover:scale-105 rounded-lg cursor-pointer duration-300'} >
      <img className='h-[100px] w-full  object-cover rounded-t-xl' src={image} alt={username} />
     <h1 className='text-center font-bold pt-2 md:text-xl py-2'>{username}</h1>
     <div className='flex  justify-between items-center shadow-xl p-2 md:p-4 rounded-b-lg pb-6'>
