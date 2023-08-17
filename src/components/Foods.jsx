@@ -5,6 +5,8 @@ import FoodsList from './FoodsList'
 import Search from './Search'
 import ReactPaginate from 'react-paginate'
 import { useAnimelContext } from '../context/AnimelContext'
+import {PiWarningOctagonFill} from 'react-icons/pi'
+import ModelWarningFilter from './ModelWarningFilter'
 
 const Foods = () => {
 
@@ -12,6 +14,7 @@ const Foods = () => {
     // const { isLoading, error } = useSelector((state)=>state.count);  
     const [filteredFoods, setFilteredFoods] = useState([]);
     const[search,setSearch] = useState('')
+    const [openModelWarning, setOpenModelWarning] = useState(false)
     // const[visibleFood,setVisibleFood] = useState(4)
     const [pageNumner,setPageNumber] = useState(0);
     const {foods} = useAnimelContext()
@@ -36,6 +39,10 @@ const Foods = () => {
       const resetFilters = () => {
         setFilteredFoods(foods);
       };
+
+      const handleOpenModelWarning = () => {
+        setOpenModelWarning(prev => !prev)
+      }
 
     // if(isLoading){
     //     return(
@@ -64,10 +71,17 @@ const Foods = () => {
 
   return (
     <div className='max-w-6xl mx-auto p-3 font-serif space-y-4'>
+      
       <div className={darkValue ? 'sticky  top-16 z-10 bg-black duration-500': 'sticky  top-16 z-10 bg-white duration-500'}>
         <h1 className='text-center text-2xl md:text-4xl font-bold text-orange-500 border-b-2 rounded-full border-orange-500'> Top Rated Menu Items</h1>
-        <div className='py-4'>
+        <div className='py-4 flex  justify-between items-center'>
           <Search  search={search} setSearch={setSearch}/>
+          <div className="">
+            <button onClick={handleOpenModelWarning} className='text-orange-500 text-3xl'><PiWarningOctagonFill/></button>
+            <div className="">
+              {openModelWarning ? <ModelWarningFilter setOpenModelWarning={setOpenModelWarning} openModelWarning={openModelWarning} /> : null}
+            </div>
+          </div>
         </div>
       </div>
       
