@@ -33,7 +33,7 @@ const Navbar = () => {
      }
   return (
     <div className='top-0 sticky z-20 duration-700'>
-        <div className={darkValue ? 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-black text-white duration-700 border-2 border-x-orange-500 border-y-black' : 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-white text-black duration-700'}>
+        <div className={darkValue ? 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-black text-white duration-700 border-2 border-x-orange-500 border-y-black' : 'flex justify-between  items-center p-4 font-serif max-w-6xl mx-auto bg-white text-black duration-700'}>
             
            <div className='flex items-center space-x-2'>
                 {/* <CgMenu size={'25px'} onClick={handleNav} className='cursor-pointer'/> */}

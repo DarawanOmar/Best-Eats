@@ -6,23 +6,16 @@ import { ImLocation } from 'react-icons/im';
 import { RiUserLocationFill } from 'react-icons/ri';
 import ReactDOMServer from 'react-dom/server';
 import { useSelector } from "react-redux";
-import ModelOrder from "./ModelOrder";
-import ModelReloadLocation from "./ModelReloadLocation";
+
 
 
 const Location = () => {
   const darkValue = useSelector((state)=>state.dark.isDark);
-  const [openDailogBox, setOpenDailogBox] = useState(false)
   const mapElement = useRef();
   const [map, setMap] = useState({});
   const [longitude, setLongitude] = useState(45.416107);
   const [latitude, setLatitude] = useState(35.566864);
-  const[reload,setReload] = useState(false)
-  const[openModelReloadLocation,setOpenModelReloadLocation] = useState(false)
-  
-  const handleOpenDailogBox = () => {
-      setOpenDailogBox(prev => !prev)
-  }
+
   const convertToPoints = (lngLat) => {
     return {
       point: {
@@ -167,7 +160,7 @@ const Location = () => {
     })
 
     return () => map.remove();
-  }, [reload]);
+  }, []);
 
   return (
     <>
