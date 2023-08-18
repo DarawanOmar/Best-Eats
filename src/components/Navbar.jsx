@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { CgClose } from 'react-icons/cg'
-import {FaShoppingCart ,FaUserFriends , FaHeart , FaTruck ,FaHome } from 'react-icons/fa'
+import {FaShoppingCart , FaHeart , FaTruck ,FaHome } from 'react-icons/fa'
 import {MdHelp ,MdPerson, MdRestaurant} from 'react-icons/md'
 import {BsSun ,BsMoon  } from 'react-icons/bs';
 import { GiLion } from 'react-icons/gi';
-import { ImLocation2 } from 'react-icons/im';
+import { BiSolidMapPin } from 'react-icons/bi';
 
 import { useSelector ,useDispatch } from 'react-redux'
 import {dark , night} from '../features/Dark-Mode/DarkModeSlice'
@@ -87,8 +87,7 @@ const Navbar = () => {
                               <Link to='/animels' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <GiLion/> <span className='ml-2 '>Animels</span></Link>
                               <Link  to='bagorder' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer  hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaTruck/> <span className='ml-2 '>Order</span></Link>
                               <Link to='/favoraite' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaHeart/> <span className='ml-2 '>Favorites</span></Link>
-                              <Link to='/location' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <ImLocation2/> <span className='ml-2 '> Location</span></Link>
-                              <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaUserFriends/> <span className='ml-2 '>invit Friend</span></li>
+                              <Link to='/location' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <BiSolidMapPin/> <span className='ml-2 '> Maps</span></Link>
                               <li onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdHelp/> <span className='ml-2 '>Help</span></li>
                               <Link to='/about' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdPerson/> <span className='ml-2 '>About Me</span></Link>
                          </ul>

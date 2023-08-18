@@ -55,7 +55,7 @@ const BagOrder = () => {
                     </div>
 
                  <div className='text-center pb-6'>
-                    <Link to='/location' className=' btn-order text-xl btn-hover '>Next</Link>
+                    <Link to='/map' className=' btn-order text-xl btn-hover '>Next</Link>
                  </div>
 
                 </div>
@@ -74,7 +74,7 @@ const BagOrder = () => {
                         </div>
                     </div>
                     <div className='text-center pb-6'>
-                        <Link to='/location' className='btn-order text-xl btn-hover'>Next</Link>
+                        <Link to='/map' className='btn-order text-xl btn-hover'>Next</Link>
                     </div>
                  
                 </div>
@@ -93,7 +93,7 @@ const BagOrder = () => {
                     </div>
                 </div>
                 <div className='text-center pb-6'>
-                    <Link to='/location' className='btn-order text-xl btn-hover'>Next</Link>
+                    <Link to='/map' className='btn-order text-xl btn-hover'>Next</Link>
                 </div>
             </div>
             ) : ( 

@@ -10,7 +10,7 @@ import ModelOrder from "./ModelOrder";
 import ModelReloadLocation from "./ModelReloadLocation";
 
 
-const Location = () => {
+const Map = () => {
   const darkValue = useSelector((state)=>state.dark.isDark);
   const [openDailogBox, setOpenDailogBox] = useState(false)
   const mapElement = useRef();
@@ -175,15 +175,23 @@ const Location = () => {
         <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[800px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center h-[550px] md:h-[800px] w-screen  px-4"}>
           {/* Top Text */}
           <div className={darkValue ? "pb-2 text-white italic my-4":"pb-2 italic my-4"}>
-            <h1 className='text-center text-xl font-bold '> Practice TO Find Yourself Location</h1>
-            <p className='text-center capitalize'> choose Your current location for find you and fastly giving your delivery! 
-            when Find Location Yourself Just Click Your Location</p>
+            <h1 className='text-center text-xl font-bold '> Mount Your Locations</h1>
+            <p className='text-center capitalize'> Choose Your Current Location For Find You And Fastly Giving Your Delivery! When you Found your Location Just Click Your Location</p>
           </div>
           {/* Map */}
           <div ref={mapElement} className="h-full w-full "></div>  
+          {/* Buttons */}
+          <div className="mt-4 flex justify-between items-center py-10">
+            <button className="btn-order bg-red-500 md:btn-hover" onClick={()=> {
+              setOpenModelReloadLocation(prev => !prev)
+            }}>Reload</button>            
+            <button onClick={handleOpenDailogBox} className="btn-order md:btn-hover">Order</button>
+          </div> 
+          <div>{openDailogBox ? <ModelOrder setOpenDailogBox={setOpenDailogBox} /> : null}</div>
+          <div>{openModelReloadLocation ? <ModelReloadLocation setReload={setReload} openModelReloadLocation={openModelReloadLocation} setOpenModelReloadLocation={setOpenModelReloadLocation} /> : null}</div>
         </div>
     )}
 </>
   )
 }
-export default Location;
+export default Map;

@@ -39,8 +39,8 @@ const ModelOrder = ({setOpenDailogBox}) => {
             </div>
 
             {/* Dailog Box */}
-            <div className={successBox ? "hidden" : " flex flex-col italic"}>
-                <div className={darkValue ? 'px-2 rounded-md bg-black text-white' : 'px-2 rounded-md bg-white'}>
+            <div className={successBox ? "hidden" : " flex flex-col italic px-6"}>
+                <div className={darkValue ? 'px-2 rounded-md bg-black text-white ' : 'px-2 rounded-md bg-white '}>
                     <div className="flex justify-between items-center">
                         <h1 className='font-bold text-xl flex items-center text-orange-500'>Best <span className={darkValue ? 'text-white mx-1 duration-500 ': 'text-black mx-1 duration-500 '}>Eat</span> <span><MdRestaurant/></span></h1>
                         <button  onClick={() => {
@@ -48,9 +48,9 @@ const ModelOrder = ({setOpenDailogBox}) => {
                             setOpenDailogBox(false)
                             }} className='bg-red-500 rounded-full w-5 h-5 flex justify-center items-center'><span className='text-white'>X</span></button>
                     </div>
-                    <div className='flex flex-col p-4'>
+                    <div className='flex flex-col p-4 '>
                         <div className='flex items-center  space-x-3'>
-                            <h1  className='text-lg px-6 '>Are You Sure Want Order ? </h1>
+                            <h1  className='text-lg px- text-center'>If You Sure Your Location Click Yes To Order ? </h1>
                         </div>
                     <div className="text-center pt-3">
                         <div>

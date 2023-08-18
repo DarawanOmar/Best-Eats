@@ -9,6 +9,7 @@ import FoodPage from "../components/FoodPage";
 import Animles from '../pages/Animles';
 import Location from './Location';
 import {AnimatePresence} from 'framer-motion'
+import Map from './Map';
 
 const Routess = () => {
     const location = useLocation()
@@ -24,6 +25,7 @@ const Routess = () => {
           <Route path="/foodpage/:id" element={<FoodPage />} />
           <Route path='/animels' element={<Animles/>}/>
           <Route path='/location' element={<Location/>}/>
+          <Route path='/map' element={<Map/>}/>
         </Routes>
       </AnimatePresence>
     </div>
