@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useRateBurger } from '../hook/useRate';
 import { AiOutlineStar } from 'react-icons/ai';
 import { useAnimelContext } from '../context/AnimelContext';
 

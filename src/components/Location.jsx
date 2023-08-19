@@ -160,7 +160,7 @@ const Location = () => {
     })
 
     return () => map.remove();
-  }, []);
+  }, [latitude,longitude]);
 
   return (
     <>

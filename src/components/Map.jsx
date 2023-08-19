@@ -167,7 +167,7 @@ const Map = () => {
     })
 
     return () => map.remove();
-  }, [reload]);
+  }, [reload,latitude,longitude]);
 
   return (
     <>
