@@ -10,7 +10,8 @@ const FoodPage = () => {
   const darkValue = useSelector((state)=>state.dark.isDark);
   const { id } = useParams();
   const food = foods.find((food) => food.id.toString() === id);
-  const f = Array(food);
+  const foo = {...food,favoraite: false}
+  const f = Array(foo);
   console.log();
   return (
     <div className="max-w-6xl mx-auto">

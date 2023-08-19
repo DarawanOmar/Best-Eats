@@ -11,6 +11,7 @@ import Location from './Location';
 import {AnimatePresence} from 'framer-motion'
 import Map from './Map';
 import RateNavBar from './RateNavBar';
+import AnimalPage from './AnimalPage';
 
 const Routess = () => {
     const location = useLocation()
@@ -28,6 +29,7 @@ const Routess = () => {
           <Route path='/location' element={<Location/>}/>
           <Route path='/map' element={<Map/>}/>
           <Route path='/rate' element={<RateNavBar/>}/>
+          <Route path='/animalpage/:id' element={<AnimalPage/>}/>
         </Routes>
       </AnimatePresence>
     </div>

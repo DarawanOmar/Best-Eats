@@ -3,6 +3,7 @@ import { useAnimelContext } from '../context/AnimelContext'
 import { useSelector } from 'react-redux'
 import { AiOutlineStar } from 'react-icons/ai'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const ListAnimels = ({id, image, price, username}) => {
 
@@ -17,7 +18,7 @@ const ListAnimels = ({id, image, price, username}) => {
 
   return (
     <div  className={darkValue ? 'md:hover:scale-105 rounded-lg cursor-pointer duration-300 border border-orange- relative ' : '  relative md:hover:scale-105 rounded-lg cursor-pointer duration-300'} >
-     <img className='h-[100px] w-full  object-cover rounded-t-xl' src={image} alt={username} />
+     <Link to={`/animalpage/${id}`}><img className='h-[100px] w-full  object-cover rounded-t-xl' src={image} alt={username} /></Link>
     <h1 className='text-center font-bold pt-2 md:text-xl py-2'>{username}</h1>
     <div className='flex  justify-between items-center shadow-xl p-2 md:p-4 rounded-b-lg pb-6'>
         <div className={qty > 0 ? 'flex space-x-2 ' : 'hidden'}>

@@ -57,8 +57,8 @@ const BagOrder = () => {
                         )}
                     </div>
                     <div className={darkValue ? 'flex justify-between items-center sticky z-10 bg-black top-[67px] py-4 ' : 'flex sticky justify-between items-center z-10 bg-white top-[67px] py-4'}>
-                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  md:text-xl lg:text-2xl  flex items-center' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl flex items-center'}>Total Price Animel:  <GiLion/> {`${totolPrice} $`}</h1>
-                        <h1 className={darkValue ? 'text- font-bold text-white text-sm mr-4  md:text-xl lg:text-2xl  flex items-center' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl flex items-center'}>Total Price Food <MdFastfood/> :{`${totolPriceFood} $`}</h1>
+                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  md:text-xl lg:text-2xl  flex items-center' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl flex items-center'}>Total Price Animel:  {`${totolPrice} $`}</h1>
+                        <h1 className={darkValue ? 'text- font-bold text-white text-sm mr-4  md:text-xl lg:text-2xl  flex items-center' : ' text- font-bold text-sm ml-4 md:text-xl lg:text-2xl flex items-center'}>Total Price Food :{`${totolPriceFood} $`}</h1>
                     </div>
 
                     <div className='p-4'>
@@ -102,7 +102,7 @@ const BagOrder = () => {
                         )}
                     </div>
                     <div className={darkValue ? 'flex sticky z-10 bg-black top-[68px] py-4' : 'flex sticky z-10 bg-white top-[68px] py-4'}>
-                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  flex items-center ' : ' text- font-bold text-sm ml-4 flex items-center'}>Total Price Food <MdFastfood/> :{`${totolPriceFood} $`} </h1>
+                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  flex items-center ' : ' text- font-bold text-sm ml-4 flex items-center'}>Total Price Food:{`${totolPriceFood} $`} </h1>
                     </div>
                     <h1 className='text-center text-orange-500 font-bold text-lg md:text-xl lg:text-2xl py-2  '>List Order Foods</h1>
                     <div className='p-4'>
@@ -135,7 +135,7 @@ const BagOrder = () => {
                         )}
                     </div>
                 <div className={darkValue ? 'flex sticky z-10 bg-black top-[68px] py-4' : 'flex sticky z-10 bg-white top-[68px] py-4'}>
-                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  flex items-center ' : ' text- font-bold text-sm ml-4 flex items-center'}>Total Price Animel <GiLion/> :{`${totolPrice} $`} </h1>
+                        <h1 className={darkValue ? 'text- font-bold text-white text-sm ml-4  flex items-center ' : ' text- font-bold text-sm ml-4 flex items-center'}>Total Price Animel:{`${totolPrice} $`} </h1>
                 </div>
                 <h1 className='text-center text-orange-500 font-bold text-lg md:text-xl lg:text-2xl py-2  '>List Order Animels</h1>
                 <div className='p-4'>

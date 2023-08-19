@@ -247,7 +247,7 @@ export const AnimelContextProvider = ({ children }) => {
       username: faker.internet.userName(),
       price: faker.number.int({ min: 30, max: 50 }),
       image: faker.image.urlLoremFlickr({ category: 'animals' }),
-      discription: faker.lorem.lines(),
+      discription: faker.lorem.paragraph(),
       category: faker.animal.type()
   
   }));
