@@ -2,7 +2,7 @@ import React from 'react'
 import Hero from './Hero'
 import Cards from './Cards'
 import Foods from './Foods'
-import RateFood from './RateFood'
+import RateFood from './RateFoodAndAnimal'
 import RateMenuFooter from './RateMenuFooter'
 import Footer from "./Footer";
 

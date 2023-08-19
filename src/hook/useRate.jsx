@@ -20,6 +20,9 @@ export  const useRateBurger = () => {
         }
     return {rateBurger ,handleRate , handleRate2 , handleRate3 , handleRate4 , handleRate5}
 }
+
+
+
 export  const useRatePizza = () => {
 
     const[ratePizza,setRatePizza] = useState(0)

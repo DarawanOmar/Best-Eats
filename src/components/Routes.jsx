@@ -10,6 +10,7 @@ import Animles from '../pages/Animles';
 import Location from './Location';
 import {AnimatePresence} from 'framer-motion'
 import Map from './Map';
+import RateNavBar from './RateNavBar';
 
 const Routess = () => {
     const location = useLocation()
@@ -26,6 +27,7 @@ const Routess = () => {
           <Route path='/animels' element={<Animles/>}/>
           <Route path='/location' element={<Location/>}/>
           <Route path='/map' element={<Map/>}/>
+          <Route path='/rate' element={<RateNavBar/>}/>
         </Routes>
       </AnimatePresence>
     </div>

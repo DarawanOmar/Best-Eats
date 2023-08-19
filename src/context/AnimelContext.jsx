@@ -262,6 +262,7 @@ export const AnimelContextProvider = ({ children }) => {
   // }));
   const[animalCarts,setAnimalCarts] = useState([])
   const[foodCarts,setFoodCarts] = useState([])
+  const[rateFoodAndAnimals,setRateFoodAndAnimals] = useState([])
 
   const getQuantityByID = (id) => {
     return animalCarts.find(animel => animel.id === id)?.quantity || 0
@@ -293,6 +294,21 @@ export const AnimelContextProvider = ({ children }) => {
         return currItems.map(item => {
           if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+}
+  function addRateFoodAndAnimals(id,numbr) { //id = 1
+    setRateFoodAndAnimals(currItems => {
+      if (currItems.find(item => item.id === id) == null) {
+        return [...currItems, { id: id, rateNumber:numbr }]
+      } else {
+        return currItems.map(item => {
+          if (item.id === id) {
+            return { ...item, rateNumber:numbr }
           } else {
             return item
           }
@@ -374,6 +390,7 @@ export const AnimelContextProvider = ({ children }) => {
       }
     })
   }
+
  
     const totalOrder = animalCarts.reduce((total,animelCart)=>{ return total + animelCart.quantity } , 0 )
     const totolPrice = animalCarts.reduce((total,animelCart) => { 
@@ -393,6 +410,7 @@ export const AnimelContextProvider = ({ children }) => {
           animal, 
           categories,
           animalCarts, 
+          rateFoodAndAnimals,
           foodCarts,
           totolPrice, 
           totalOrder,
@@ -407,7 +425,8 @@ export const AnimelContextProvider = ({ children }) => {
           removeAnimelFromCarts,
           removeFoodFromCarts,
           addToFavoraite ,
-          addToFavoraiteFood
+          addToFavoraiteFood,
+          addRateFoodAndAnimals
           }}>
             {children}
         </AnimelContext.Provider>

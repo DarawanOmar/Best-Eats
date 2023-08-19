@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import FoodPageDisplay from "./FoodPageDisplay";
 import { Link } from "react-router-dom";
+import { useAnimelContext } from "../context/AnimelContext";
 
 const FoodPage = () => {
+  const {foods} = useAnimelContext()
   const darkValue = useSelector((state)=>state.dark.isDark);
-  const foods = useSelector((state) => state.count.foods);
   const { id } = useParams();
   const food = foods.find((food) => food.id.toString() === id);
   const f = Array(food);
