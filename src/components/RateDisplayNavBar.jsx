@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 const RateDisplayNavBar = ({id,rateNumber}) => {
   const darkValue = useSelector((state)=>state.dark.isDark);
   const rateExists = listItemsRate.find(item => item.id === id)
-  console.log(rateExists);
   if(!rateExists) return null
   return (
     <div>
