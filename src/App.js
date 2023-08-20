@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { BrowserRouter  } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { useSelector  } from 'react-redux'
 import Routess from "./components/Routes";
 import { AnimelContextProvider } from "./context/AnimelContext";

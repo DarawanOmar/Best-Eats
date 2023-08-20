@@ -12,9 +12,13 @@ import {AnimatePresence} from 'framer-motion'
 import Map from './Map';
 import RateNavBar from './RateNavBar';
 import AnimalPage from './AnimalPage';
+import useScrollToTop from '../hook/useScrollToTop';
 
 const Routess = () => {
-    const location = useLocation()
+
+  useScrollToTop()
+  const location = useLocation()
+  
   return (
     <div>
       <AnimatePresence >

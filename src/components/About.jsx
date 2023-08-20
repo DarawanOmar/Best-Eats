@@ -3,7 +3,7 @@ import imgae2 from '../img/In no time-amico.png'
 import { useSelector  } from 'react-redux'
 
 import {motion} from 'framer-motion'
-import Test from './Test'
+
 
 
 const About = () => {
@@ -27,7 +27,7 @@ const About = () => {
                 <h1 className={darkValue ? 'text-orange-500 font-bold text-3xl md:text-4xl lg:text-5xl text-center pb-4':'text-orange-500 font-bold text-3xl md:text-4xl lg:text-5xl text-center pb-4'}>Welcome!</h1>
                 We are a team of passionate individuals who believe in delivering quality products to our customers
                 This is a simple delivery app built with react and redux, which allows users to place orders for
-                <span> <Test/></span>
+
             </p>
             <img className='max-h-[300px] max-w-[300px] w-full h-full mx-auto border-2 rounded-lg shadow-2xl bg-gradient-to-t from-orange-600 to-orange-200' src={imgae2} alt="/" />
         </div>
