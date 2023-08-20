@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux';
 import {AiOutlineStar} from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { useAnimelContext } from '../context/AnimelContext';
 
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+
 const FoodsList = ({id,name,image,price}) => {
+    
+    useEffect(()=>{
+      Aos.init()
+    },[])
 
     const darkValue = useSelector((state)=>state.dark.isDark);
     const[favorite,setFavorite] = useState(false)
@@ -15,7 +22,7 @@ const FoodsList = ({id,name,image,price}) => {
     const qty = getQuantityFoodByID(id)
 
   return (
-    <div  className={darkValue ? 'md:hover:scale-105 rounded-lg cursor-pointer duration-300 border border-orange- relative ' : '  relative md:hover:scale-105 rounded-lg cursor-pointer duration-300'} >
+    <div data-aos="fade-up" className={darkValue ? 'md:hover:scale-105 rounded-lg cursor-pointer duration-300 border border-orange- relative ' : '  relative md:hover:scale-105 rounded-lg cursor-pointer duration-300'} >
         <Link to={`/foodpage/${id}`} > <img className='h-[100px] w-full  object-cover rounded-t-xl ' src={image} alt={name} /> </Link>
         <h1 className='text-center font-bold pt-2 md:text-xl py-2'>{name}</h1>
         <div className='flex  justify-between items-center shadow-xl p-2 md:p-4 rounded-b-lg pb-6'>

@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Hero = () => {
+
+  useEffect(()=>{
+    Aos.init()
+  },[])
   
   return (
     <div className= 'max-w-6xl mx-auto p-4 font-serif'>
 
-      <div className='max-h-[500px] relative '>
+      <div className='max-h-[500px] relative ' data-aos='fade-right'>
         
           <div className='absolute  bg-black/50 w-full h-full text-gray-200 max-h-[500px] flex flex-col justify-center'>
             <h1 className='px-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold'>The <span className='text-orange-500'>Best</span></h1>

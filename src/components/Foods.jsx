@@ -8,6 +8,7 @@ import { useAnimelContext } from '../context/AnimelContext'
 import {PiWarningOctagonFill} from 'react-icons/pi'
 import ModelWarningFilter from './ModelWarningFilter'
 
+
 const Foods = () => {
 
     const darkValue = useSelector((state)=>state.dark.isDark);
