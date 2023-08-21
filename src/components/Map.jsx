@@ -172,7 +172,7 @@ const Map = () => {
   return (
     <>
     {map && (
-        <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[800px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center h-[550px] md:h-[800px] w-screen  px-4"}>
+        <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[650px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center  h-[550px] md:h-[650px] w-screen  px-4"}>
           {/* Top Text */}
           <div className={darkValue ? "pb-2 text-white italic my-4":"pb-2 italic my-4"}>
             <h1 className='text-center text-xl font-bold '> Mount Your Locations</h1>
