@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { CgClose } from 'react-icons/cg'
-import {FaShoppingCart , FaHeart , FaTruck ,FaHome } from 'react-icons/fa'
+import { IoMdClose } from 'react-icons/io'
+import {FaShoppingCart , FaHeart , FaTruck ,FaHome, FaCloudMoon } from 'react-icons/fa'
 import {MdPerson, MdRestaurant} from 'react-icons/md'
 import {BsSun ,BsMoon, BsTextParagraph  } from 'react-icons/bs';
 import { GiLion } from 'react-icons/gi';
@@ -70,11 +70,8 @@ const Navbar = () => {
                     <div className={nav && darkValue ? 'fixed top-0 left-0 bg-black text-white w-[230px] sm:w-[250px] md:w-[280px] lg:w-[300px] h-screen  duration-500 ease-in-out ': nav && !darkValue ? 'fixed top-0 left-0 bg-white text-black w-[230px] sm:w-[250px] md:w-[280px] lg:w-[300px] h-screen  duration-500 ease-in-out ' : ' fixed  left-[-100%] duration-500 ' }>
                          <div className='flex justify-between items-center  p-4'>
                               <h1 className='text-2xl md:text-3xl'>Best <span className='font-bold text-orange-500'>Eats</span></h1>
-                              <div className='flex lg:ml-4 items-center bg-gray-500 text-white rounded-full text-xs sm:text-lg md:text-xl'>
-                                   <button onClick={()=> { dispatch(night())}} className= {darkValue ?  'rounded-full p-2  cursor-pointer duration-500' : 'bg-black rounded-full p-2  cursor-pointer duration-500'}><BsSun/></button>
-                                   <button onClick={()=> { dispatch(dark())}} className= {darkValue ? ' text-black rounded-full p-2  cursor-pointer bg-white' : ' text-white rounded-full p-2  cursor-pointer'}><BsMoon/></button>
-                              </div>
-                              <CgClose  size={'25px'} onClick={handleNav} className='cursor-pointer'/>
+                            
+                              <IoMdClose  size={'25px'} onClick={handleNav} className='cursor-pointer font-bold'/>
                          </div>
                          <ul className='p-4 pt-6 flex flex-col '>
                               <Link to='/' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]   hover:border-orange-500  ' : 'hidden'}> <FaHome /> <span className='ml-2 '>Home</span></Link>
@@ -84,6 +81,7 @@ const Navbar = () => {
                               <Link to='/favoraite' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaHeart/> <span className='ml-2 '>Favorites</span></Link>
                               <Link to='/location' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <BiSolidMapPin/> <span className='ml-2 '> Maps</span></Link>
                               <Link to='/rate' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <SlGraph/> <span className='ml-2 '>Rates</span></Link>
+                              <Link to='/theme' onClick={handleNav} className={nav ? 'flex items-center text-xl mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaCloudMoon/> <span className='ml-2 text-lg'>Change Theme</span></Link>
                               <Link to='/about' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdPerson/> <span className='ml-2 '>About Me</span></Link>
                          </ul>
                     </div>

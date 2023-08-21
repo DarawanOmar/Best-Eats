@@ -13,6 +13,7 @@ import Map from './Map';
 import RateNavBar from './RateNavBar';
 import AnimalPage from './AnimalPage';
 import useScrollToTop from '../hook/useScrollToTop';
+import Theme from './Theme';
 
 const Routess = () => {
 
@@ -33,6 +34,7 @@ const Routess = () => {
           <Route path='/location' element={<Location/>}/>
           <Route path='/map' element={<Map/>}/>
           <Route path='/rate' element={<RateNavBar/>}/>
+          <Route path='/theme' element={<Theme/>}/>
           <Route path='/animalpage/:id' element={<AnimalPage/>}/>
         </Routes>
       </AnimatePresence>
