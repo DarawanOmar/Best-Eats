@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector  } from 'react-redux'
-import {AiOutlineStar} from 'react-icons/ai'
 import { useAnimelContext } from '../context/AnimelContext';
+import { VscHeartFilled } from 'react-icons/vsc'
+
 
 const FavoraiteListFood = ({id}) => {
   
@@ -25,7 +26,7 @@ return (
   </div>
   <span onClick={()=>{
       addToFavoraiteFood(id)
-  }} className= 'absolute top-0 right-0 bg-orange-500 text-white rounded-full'><AiOutlineStar/></span>
+  }} className= 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full'><VscHeartFilled/></span>
 </div>
 )
 }
