@@ -5,11 +5,15 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { RiHeart3Fill, RiHeartAddFill } from 'react-icons/ri'
 
-const ListAnimels = ({id, image, price, username}) => {
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { auth } from '../config/firebase';
 
-    const darkValue = useSelector((state)=>state.dark.isDark);
-    const {getQuantityByID, increaseAnimelCartQuantity, decreaseAnimelCartQuantity, addToFavoraite} = useAnimelContext()
-    const qty = getQuantityByID(id)
+const ListAnimels = ({id, image, price, username, showModelLogin, setShowModelLogin}) => {
+  
+  const darkValue = useSelector((state)=>state.dark.isDark);
+  const {getQuantityByID, increaseAnimelCartQuantity, decreaseAnimelCartQuantity, addToFavoraite} = useAnimelContext()
+  const qty = getQuantityByID(id)
+  const[user] = useAuthState(auth)
 
     const[toggleFavoraite, setToggleFavoraite] = useState(false)
     const handleFavoraite = () => {
@@ -25,14 +29,24 @@ const ListAnimels = ({id, image, price, username}) => {
               <button disabled={qty<1} onClick={()=> decreaseAnimelCartQuantity(id)} className={darkValue ? 'bg-white text-black rounded-md px-2 font-bold  md:text-xl ' : 'bg-slate-300 rounded-md px-2 font-bold  md:text-xl '}>-</button>
               <button onClick={()=> increaseAnimelCartQuantity(id)} className={darkValue ? 'bg-white text-black rounded-md px-2 font-bold  md:text-xl ' : 'bg-slate-300 rounded-md px-2 font-bold  md:text-xl '}>+</button>
           </div>
-          <button className={qty === 0 ? 'flex text-white bg-orange-500 rounded-md px-4 ' : 'hidden'} onClick={()=> increaseAnimelCartQuantity(id)}>Order</button>
+          {user ? (
+               <button onClick={()=> increaseAnimelCartQuantity(id)} className={qty === 0 ? 'flex text-white bg-orange-500 rounded-md px-2 md:px-4' : 'hidden'} >Order</button> 
+              ):(
+                <button onClick={()=> setShowModelLogin(!showModelLogin)} className='flex text-white bg-orange-500 rounded-md px-2 md:px-4'  >Order</button>
+            )}
           <span className={qty >0 ? 'font-bold text-xl' : 'hidden'}>{qty}</span>
           <h1 className='text-sm rounded-md px-1 font-mono'>{`${price}$`}</h1>
       </div>
-      <span onClick={()=>{
-          handleFavoraite()
-          addToFavoraite(id)
-      }} className={toggleFavoraite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ toggleFavoraite ? <RiHeart3Fill/> : <RiHeartAddFill/> }</span>
+      {user ? ( 
+
+<button onClick={()=>{
+    handleFavoraite()
+    addToFavoraite(id)
+    }} className={toggleFavoraite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ toggleFavoraite ? <RiHeart3Fill/> : <RiHeartAddFill/> }
+</button>) : (
+
+<button onClick={()=>setShowModelLogin(!showModelLogin)} className={toggleFavoraite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ toggleFavoraite ? <RiHeart3Fill/> : <RiHeartAddFill/> }</button>
+)}
 </div>
   )
 }

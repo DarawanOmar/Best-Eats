@@ -7,6 +7,7 @@ import ReactPaginate from 'react-paginate'
 import { useAnimelContext } from '../context/AnimelContext'
 import {AiFillWarning} from 'react-icons/ai'
 import ModelWarningFilter from './ModelWarningFilter'
+import ModelLogin from './ModelLogin'
 
 
 const Foods = () => {
@@ -19,6 +20,7 @@ const Foods = () => {
     // const[visibleFood,setVisibleFood] = useState(4)
     const [pageNumner,setPageNumber] = useState(0);
     const {foods} = useAnimelContext()
+    const[showModelLogin,setShowModelLogin] = useState(false)
 
    
 
@@ -79,9 +81,14 @@ const Foods = () => {
           <Search  search={search} setSearch={setSearch}/>
           <div className="">
             <button onClick={handleOpenModelWarning} className='text-orange-500 text-3xl'><AiFillWarning/></button>
+            {/*  model Warinig*/}
             <div className="">
               {openModelWarning ? <ModelWarningFilter setOpenModelWarning={setOpenModelWarning} openModelWarning={openModelWarning} /> : null}
             </div>
+            {/* model Login */}
+            {showModelLogin ? ( <div className="">
+              {showModelLogin ? <ModelLogin setShowModelLogin={setShowModelLogin} showModelLogin={showModelLogin} /> : null}
+            </div>) :null }
           </div>
         </div>
       </div>
@@ -114,7 +121,7 @@ const Foods = () => {
       <>
         <div className='grid  grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-3 pt-14'>
             {filteredFoods.slice(pageVisited,pageVisited + foodPerPage).map((fod)=>{
-                return <FoodsList key={fod.id} {...fod}/>
+                return <FoodsList key={fod.id} food={fod} showModelLogin={showModelLogin} setShowModelLogin={setShowModelLogin} />
             })}
         </div>
         <div className='p-4'>

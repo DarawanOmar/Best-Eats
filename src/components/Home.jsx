@@ -6,7 +6,6 @@ import RateFood from './RateFoodAndAnimal'
 import RateMenuFooter from './RateMenuFooter'
 import Footer from "./Footer";
 
-
 const Home = () => {
   return (
     <div>

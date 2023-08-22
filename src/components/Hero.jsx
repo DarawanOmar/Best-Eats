@@ -39,7 +39,7 @@ const Hero = () => {
       <div className=' mt-5 flex text-center flex-col md:hidden'>
         <p className='capitalize text-center'> you can order food and animals and amount  location for fast delivery and add food and animals to favoraite and aslo rate food & animals.</p>
         <h3> You Can Order Now Click The Button Below : </h3>
-        <div className='flex mb-10'>
+        <div className='flex mb-10 justify-center items-center'>
           <Link to='/food' className='btn-order md:btn-hover mt-4 text-sm py-4'>Order Food Now </Link >
           <Link to='/animels' className='btn-order md:btn-hover mt-4 text-sm py-4'>Order Animals Now </Link >
         </div>

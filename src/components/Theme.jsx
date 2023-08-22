@@ -5,19 +5,15 @@ import { dark, night } from '../features/Dark-Mode/DarkModeSlice';
 const Theme = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);
     const dispatch = useDispatch();
-    const [nav ,setNav] = useState(false)
     const [handleBtn, sethandleBtn] = useState(true)
 
-    const handleDeliveryBtn = () =>{
+    const darkMode = () =>{
         sethandleBtn(true)
    }
-   const handlePickupDelivery = () =>{
+   const lightMode = () =>{
         sethandleBtn(false)
    }
 
-    const handleNav = () => {
-        setNav(!nav)
-   }
   return (
     <div className='min-h-screen font-serif'>
         {/* <div className='max-w-6xl mx-auto  flex justify-between items-center  p-2'>
@@ -38,11 +34,11 @@ const Theme = () => {
             <div className='flex items-center space-x-2'>
                     <div className='flex  items-center bg-gray-400 text-white rounded-full '>
                         <button onClick={() => {
-                            handleDeliveryBtn()
+                            darkMode()
                             dispatch(night())
                         }} ><div className={handleBtn && darkValue ? 'bg-white text-black rounded-full p-3 border-y-orange-500 cursor-pointer  duration-500 ' : handleBtn && !darkValue ? 'bg-black rounded-full p-3 border-y-orange-500 cursor-pointer  duration-500 ' : 'bg-gray-400 rounded-full p-2  cursor-pointer duration-500'}></div></button>
                         <button onClick={() => {
-                            handlePickupDelivery()
+                            lightMode()
                             dispatch(dark())
                         }}><div  className={!handleBtn && darkValue ? 'bg-green-400 text-black rounded-full p-3  cursor-pointer': !handleBtn && !darkValue ? 'bg-black rounded-full p-3  cursor-pointer ' : 'bg-gray-400 rounded-full p-2  cursor-pointer'}></div></button>
                     </div>

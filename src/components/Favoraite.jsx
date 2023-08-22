@@ -63,8 +63,8 @@ const Favoraite = () => {
           </div>
         ) : (
         <div className='flex flex-col items-center justify-center mt-48 text-center'>
-          <h1 className='text-center font-bold text-2xl md:text-3xl lg:text-4xl'>Your Favoraite Food or Animels List  Not Yet !</h1>
-          <p className='py-3 font-bold'>Click This Button To Add Favoraite Foods or Favoraite Animels</p>
+          <h1 className='text-center font-bold text-2xl md:text-3xl lg:text-4xl '>Your Favoraite Food or Animels List  Not Yet !</h1>
+          <p className='py-3 font-bold text-gray-400'>Click This Button To Add Favoraite Foods or Favoraite Animels</p>
           <div className='flex flex-col items-center md:flex-row  md:space-x-4 space-y-2 md:space-y-0'>
             <Link to='/food' className={darkValue ? "bg-orange-500 px-4 py-1  rounded-md  border-2 border-orange-500 text-white hover:bg-transparent hover:text-white duration-500" : "bg-orange-500 px-4 py-1  rounded-md  border-2 border-orange-500 text-white hover:bg-transparent hover:text-black duration-500 "}> Add Favoraite Foods </Link>
             <Link to='/animels' className={darkValue ? "bg-orange-500 px-4 py-1  rounded-md  border-2 border-orange-500 text-white hover:bg-transparent hover:text-white duration-500" : "bg-orange-500 px-2 py-1  rounded-md  border-2 border-orange-500 text-white hover:bg-transparent hover:text-black duration-500 "}> Add Favoraite Animels </Link>

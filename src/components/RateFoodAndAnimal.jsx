@@ -9,8 +9,12 @@ import ListRateFoodAndAnimal from "./ListRateFoodAndAnimal";
 
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import { useState } from "react";
+import ModelLogin from "./ModelLogin";
 
 const RateFood = () => {
+  const[showModelLogin,setShowModelLogin] = useState(false)
+
   useEffect(()=>{
     Aos.init()
   },[])
@@ -45,11 +49,16 @@ const RateFood = () => {
               modules={[Pagination]}
             >
                 {itemsRate.map(item=>{
-                    return <SwiperSlide key={item.id}> <ListRateFoodAndAnimal  {...item}/> </SwiperSlide>
+                    return <SwiperSlide key={item.id}> <ListRateFoodAndAnimal  {...item} showModelLogin={showModelLogin} setShowModelLogin={setShowModelLogin} /> </SwiperSlide>
                 })}
             </Swiper>
         </div>
-
+        
+        {showModelLogin ? (
+        <div className="">
+            {showModelLogin ? <ModelLogin setShowModelLogin={setShowModelLogin} showModelLogin={showModelLogin} /> : null}
+        </div>) :null 
+      }
         
     </div>
   )

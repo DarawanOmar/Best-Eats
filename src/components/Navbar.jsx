@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
-import {FaShoppingCart , FaHeart , FaTruck ,FaHome, FaCloudMoon } from 'react-icons/fa'
-import {MdPerson, MdRestaurant} from 'react-icons/md'
+import {FaShoppingCart , FaHeart , FaTruck ,FaHome, FaCloudMoon, } from 'react-icons/fa'
+import {MdPerson, MdRestaurant, MdLogout} from 'react-icons/md'
 import {BsSun ,BsMoon, BsTextParagraph  } from 'react-icons/bs';
 import { GiLion } from 'react-icons/gi';
 import { BiSolidMapPin } from 'react-icons/bi';
@@ -12,8 +12,11 @@ import {dark , night} from '../features/Dark-Mode/DarkModeSlice'
 import { Link } from 'react-router-dom'
 import { useAnimelContext } from '../context/AnimelContext'
 
+import logoUser from '../img/NicePng_gray-circle-png_1366211.png'
 
-
+import {auth} from '../config/firebase'
+import {useAuthState} from 'react-firebase-hooks/auth'
+import {signOut} from 'firebase/auth'
 
 const Navbar = () => {
 
@@ -21,6 +24,7 @@ const Navbar = () => {
      const dispatch = useDispatch();
      const [handleBtn, sethandleBtn] = useState(true)
      const [nav ,setNav] = useState(false)
+     const [showLogout, setShowLogout] = useState(false)
      const {totalOrder, totalOrderFood} = useAnimelContext()
 
      const handleNav = () => {
@@ -32,12 +36,27 @@ const Navbar = () => {
      const handlePickupDelivery = () =>{
           sethandleBtn(false)
      }
+     const handleShowLogout = () => {
+          setShowLogout(!showLogout)
+     }
+     const handleShowLogout2 = () => {
+          setShowLogout(false)
+     }
+
+     const[user] = useAuthState(auth)
+     const logOut = async () => {
+          await signOut(auth)
+     }
+
   return (
     <div className='top-0 sticky z-20 duration-700'>
         <div className={darkValue ? 'flex justify-between items-center p-4 font-serif max-w-6xl mx-auto bg-black text-white duration-700 border-2 border-x-orange-500 border-y-black' : 'flex justify-between  items-center p-4 font-serif max-w-6xl mx-auto bg-white text-black duration-700'}>
             
            <div className='flex items-center space-x-2'>
-                <button onClick={handleNav} className='text-3xl cursor-pointer'> <BsTextParagraph/></button>
+                <button onClick={() => {
+                    handleNav()
+                    handleShowLogout2()
+                }} className='text-3xl cursor-pointer'> <BsTextParagraph/></button>
                 <Link to='/' className='text-3xl md:text-3xl'>Best <span className='font-bold text-orange-500'>Eats</span></Link>
                 <div className='hidden md:flex lg:ml-4 items-center bg-gray-400 text-white rounded-full text-sm'>
                     <p onClick={handleDeliveryBtn} className={handleBtn && darkValue ? 'bg-white text-black rounded-full p-2 border-y-orange-500 cursor-pointer  duration-500 ' : handleBtn && !darkValue ? 'bg-black rounded-full p-2 border-y-orange-500 cursor-pointer  duration-500 ' : 'bg-gray-400 rounded-full p-2  cursor-pointer duration-500'}>Delivery</p>
@@ -57,7 +76,22 @@ const Navbar = () => {
                     <FaShoppingCart size={'20px'}/>
                     <span className={totalOrderFood  > 0 || totalOrder > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white pr-1 max-w-max rounded-full ' : 'hidden'}>{totalOrderFood + totalOrder}</span>
                </Link>
-           </div>
+               <div  className='flex justify-center items-center'>
+                    {!user ? (
+                         <Link to='/login'><img src={logoUser} alt="user" className='w-8 h-8 rounded-full flex justify-center items-center ' /></Link>
+                    ):(
+                         <button onClick={handleShowLogout}>
+                              <img src={user?.photoURL} alt="user" className='w-8 h-8 rounded-full flex justify-center items-center ' />
+                         </button>
+                    )}
+               </div>
+           </div >
+          <div className={showLogout ?  'fixed top-16 right-2 lg:right-28 bg-orange-500 text-white p-2 rounded-sm translate-y-0 duration-700 ease-in-out' : "hidden translate-y-0 duration-700 ease-in-out"}>
+               <button onClick={() => {
+                    logOut()
+                    handleShowLogout()
+               }} className='flex items-center'>LogOut <span className='ml-1'><MdLogout/></span></button>
+          </div>
         </div>
 
 
