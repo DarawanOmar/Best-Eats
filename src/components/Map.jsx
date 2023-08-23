@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import ModelOrder from "./ModelOrder";
 import ModelReloadLocation from "./ModelReloadLocation";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Map = () => {
   const darkValue = useSelector((state)=>state.dark.isDark);
@@ -169,29 +171,34 @@ const Map = () => {
     return () => map.remove();
   }, [reload,latitude,longitude]);
 
+  const showToastify = () => {
+    toast.success("SuccessFully Order Send")
+  }
+
   return (
-    <>
-    {map && (
-        <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[650px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center  h-[550px] md:h-[650px] w-screen  px-4"}>
-          {/* Top Text */}
-          <div className={darkValue ? "pb-2 text-white italic my-4":"pb-2 italic my-4"}>
-            <h1 className='text-center text-xl font-bold '> Mount Your Locations</h1>
-            <p className='text-center capitalize'> Choose Your Current Location For Find You And Fastly Giving Your Delivery! When you Found your Location Just Click Your Location</p>
-          </div>
-          {/* Map */}
-          <div ref={mapElement} className="h-full w-full "></div>  
-          {/* Buttons */}
-          <div className="mt-4 flex justify-between items-center py-10">
-            <button className="btn-order bg-red-500 md:btn-hover" onClick={()=> {
-              setOpenModelReloadLocation(prev => !prev)
-            }}>Reload</button>            
-            <button onClick={handleOpenDailogBox} className="btn-order md:btn-hover">Order</button>
-          </div> 
-          <div>{openDailogBox ? <ModelOrder setOpenDailogBox={setOpenDailogBox} /> : null}</div>
-          <div>{openModelReloadLocation ? <ModelReloadLocation setReload={setReload} openModelReloadLocation={openModelReloadLocation} setOpenModelReloadLocation={setOpenModelReloadLocation} /> : null}</div>
-        </div>
-    )}
-</>
+      <>
+        {map && (
+            <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[650px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center  h-[550px] md:h-[650px] w-screen  px-4"}>
+              {/* Top Text */}
+              <div className={darkValue ? "pb-2 text-white italic my-4":"pb-2 italic my-4"}>
+                <h1 className='text-center text-xl font-bold '> Mount Your Locations</h1>
+                <p className='text-center capitalize'> Choose Your Current Location For Find You And Fastly Giving Your Delivery! When you Found your Location Just Click Your Location</p>
+              </div>
+              {/* Map */}
+              <div ref={mapElement} className="h-full w-full "></div>  
+              {/* Buttons */}
+              <div className="mt-4 flex justify-between items-center py-10">
+                <button className="btn-order bg-red-500 md:btn-hover" onClick={()=> {
+                  setOpenModelReloadLocation(prev => !prev)
+                }}>Reload</button>            
+                <button onClick={handleOpenDailogBox} className="btn-order md:btn-hover">Order</button>
+              </div> 
+              <div>{openDailogBox ? <ModelOrder setOpenDailogBox={setOpenDailogBox} showToastify={showToastify}/> : null}</div>
+              <div>{openModelReloadLocation ? <ModelReloadLocation setReload={setReload} openModelReloadLocation={openModelReloadLocation} setOpenModelReloadLocation={setOpenModelReloadLocation} /> : null}</div>
+            </div>
+        )}
+        <ToastContainer/>
+      </>
   )
 }
 export default Map;

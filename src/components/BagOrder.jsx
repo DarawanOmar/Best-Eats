@@ -48,7 +48,7 @@ const BagOrder = () => {
                          <button className='text-orange-500 text-3xl md:text-4xl md:mr-2' onClick={handleToggleAdd} ><CgPlayListAdd/></button>
                          </div>
                     </div>
-                    <div className={toggleAdd ? "flex justify-center space-x-4 items-center  translate-x-0 duration-700 ease-in-ou py-6" : "translate-x-[-100%] duration-700 ease-in-out "} >
+                    <div className={toggleAdd ? "flex justify-center space-x-4 items-center  translate-x-0 duration-700 ease-in-out py-6" : "translate-x-[-100%] duration-700 ease-in-out "} >
                     {toggleAdd && (
                             <>
                                 <Link className='btn-order md:btn-hover flex ' to='/food'>Add Foods <MdFastfood/> </Link>

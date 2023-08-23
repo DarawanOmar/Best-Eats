@@ -15,6 +15,7 @@ import AnimalPage from './AnimalPage';
 import useScrollToTop from '../hook/useScrollToTop';
 import Theme from './Theme';
 import Login from './Login';
+import FeedBack from './FeedBack';
 
 const Routess = () => {
 
@@ -37,6 +38,7 @@ const Routess = () => {
           <Route path='/rate' element={<RateNavBar/>}/>
           <Route path='/theme' element={<Theme/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/feedback' element={<FeedBack/>}/>
           <Route path='/animalpage/:id' element={<AnimalPage/>}/>
         </Routes>
       </AnimatePresence>

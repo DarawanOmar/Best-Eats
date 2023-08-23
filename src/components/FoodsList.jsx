@@ -10,7 +10,8 @@ import 'aos/dist/aos.css'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { auth } from '../config/firebase';
 
-const FoodsList = ({food, setShowModelLogin, showModelLogin}) => {
+
+const FoodsList = ({food, setShowModelLogin, showModelLogin, showToastify}) => {
   
   useEffect(()=>{
     Aos.init()
@@ -37,13 +38,17 @@ const FoodsList = ({food, setShowModelLogin, showModelLogin}) => {
                 <button onClick={()=> increaseFoodCartQuantity(food.id)} className={darkValue ? 'bg-white text-black rounded-md px-2 font-bold  md:text-xl ' : 'bg-slate-300 rounded-md px-2 font-bold  md:text-xl '}>+</button>
             </div>
             {user ? (
-               <button onClick={()=> increaseFoodCartQuantity(food.id)} className={qty === 0 ? 'flex text-white bg-orange-500 rounded-md px-2 md:px-4' : 'hidden'} >Order</button> 
+               <button onClick={()=> {
+                increaseFoodCartQuantity(food.id)
+                showToastify()
+              }} className={qty === 0 ? 'flex text-white bg-orange-500 rounded-md px-2 md:px-4' : 'hidden'} >Order</button> 
               ):(
-                <button onClick={()=> setShowModelLogin(!showModelLogin)} className='flex text-white bg-orange-500 rounded-md px-2 md:px-4'  >Order</button>
+                <button onClick={()=> setShowModelLogin(prev => !prev)} className='flex text-white bg-orange-500 rounded-md px-2 md:px-4'  >Order</button>
             )}
             <span className={qty >0 ? 'font-bold text-xl' : 'hidden'}>{qty}</span>
             <h1 className='text-sm rounded-md px-1 font-mono'>{`${food.price}$`}</h1>
         </div>
+
         
         {user ? ( 
 
@@ -56,8 +61,6 @@ const FoodsList = ({food, setShowModelLogin, showModelLogin}) => {
         <button onClick={()=>setShowModelLogin(!showModelLogin)} className={favorite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ favorite ? <RiHeart3Fill/> : <RiHeartAddFill/> }</button>
         )}
         
-        
-      
      
     </div>
   )

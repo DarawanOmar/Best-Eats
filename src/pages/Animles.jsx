@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
 import ModelLogin from '../components/ModelLogin'
+import { Slide, ToastContainer, toast } from 'react-toastify'
 
 const Animles = () => {
     const {animal} = useAnimelContext()
@@ -29,6 +30,10 @@ const Animles = () => {
       const filterSearch = animal.filter((animel)=> (animel.category).toLowerCase().includes(((search).toLowerCase())))
     setFilteredAnimels(filterSearch)
   }, [animal , search]);
+
+  const showToastify = () => {
+    toast.success('Added To BagOrder');
+  }
   
 
   return (
@@ -46,7 +51,7 @@ const Animles = () => {
       }
       <div className='grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-14 max-w-6xl mx-auto p-3'>
           {filterSearch.slice(pageVisited,pageVisited + foodPerPage).map(food=>{
-              return <ListAnimels key={food.id} {...food} showModelLogin={showModelLogin} setShowModelLogin={setShowModelLogin}/>
+              return <ListAnimels key={food.id} {...food} showModelLogin={showModelLogin} setShowModelLogin={setShowModelLogin} showToastify={showToastify}/>
           })}
       </div>
       <div className='pb-10 p-5'>
@@ -62,6 +67,11 @@ const Animles = () => {
          activeClassName="border-2  border-orange-500 bg-orange-500 px-4 py-1 rounded-md text-white  border-2 hover:bg-transparent hover:border-orange-500 hover:text-black duration-500 cursor-pointer"
         />
         </div>
+        <ToastContainer
+          position='top-center'
+          theme='light'
+          transition={Slide}
+      />
     </div>
   )
 }

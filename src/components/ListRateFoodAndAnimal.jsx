@@ -33,32 +33,32 @@ const ListRateFoodAndAnimal = ({id,name,image, setShowModelLogin, showModelLogin
                 </button>}
                 
                 {user ? <button  onClick={() => {
-                  setRate(1)
-                  handleRating(1)
+                  setRate(2)
+                  handleRating(2)
                   }}  className={rate === 2 || rate === 3 || rate === 4 || rate === 5 ? 'text-orange-500' : 'text-white'}><AiOutlineStar/>
                 </button> :
                 <button  onClick={() => setShowModelLogin(!showModelLogin)}  className={rate === 2 || rate === 3 || rate === 4 || rate === 5 ? 'text-orange-500' : 'text-white'}><AiOutlineStar/>
                 </button>}
 
                 {user ? <button  onClick={() => {
-                  setRate(1)
-                  handleRating(1)
+                  setRate(3)
+                  handleRating(3)
                   }}  className={rate === 3 || rate === 4 || rate === 5? 'text-orange-500' : 'text-white'}><AiOutlineStar/>
                 </button> :
                 <button  onClick={() => setShowModelLogin(!showModelLogin)}  className={rate === 3 || rate === 4 || rate === 5? 'text-orange-500' : 'text-white'}><AiOutlineStar/>
                 </button>}
 
                 {user ? <button  onClick={() => {
-                  setRate(1)
-                  handleRating(1)
+                  setRate(4)
+                  handleRating(4)
                   }}  className={rate === 4 || rate === 5  ? 'text-orange-500' : 'text-white'}><AiOutlineStar/>
                 </button> :
                 <button  onClick={() => setShowModelLogin(!showModelLogin)}  className={rate === 4 || rate === 5  ? 'text-orange-500' : 'text-white'}><AiOutlineStar/>
                 </button>}
 
                 {user ? <button  onClick={() => {
-                  setRate(1)
-                  handleRating(1)
+                  setRate(5)
+                  handleRating(5)
                   }}  className={rate === 5 ? 'text-orange-500' : 'text-white'}><AiOutlineStar/>
                 </button> :
                 <button  onClick={() => setShowModelLogin(!showModelLogin)}  className={rate === 5 ? 'text-orange-500' : 'text-white'}><AiOutlineStar/>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import {FaShoppingCart , FaHeart , FaTruck ,FaHome, FaCloudMoon, } from 'react-icons/fa'
-import {MdPerson, MdRestaurant, MdLogout} from 'react-icons/md'
+import {MdPerson, MdRestaurant, MdLogout, MdFeedback} from 'react-icons/md'
 import {BsSun ,BsMoon, BsTextParagraph  } from 'react-icons/bs';
 import { GiLion } from 'react-icons/gi';
 import { BiSolidMapPin } from 'react-icons/bi';
@@ -18,6 +18,8 @@ import {auth} from '../config/firebase'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {signOut} from 'firebase/auth'
 
+import { useNavigate } from 'react-router-dom';
+
 const Navbar = () => {
 
      const darkValue = useSelector((state)=>state.dark.isDark);
@@ -26,6 +28,8 @@ const Navbar = () => {
      const [nav ,setNav] = useState(false)
      const [showLogout, setShowLogout] = useState(false)
      const {totalOrder, totalOrderFood} = useAnimelContext()
+
+     const navigate = useNavigate()
 
      const handleNav = () => {
           setNav(!nav)
@@ -62,9 +66,7 @@ const Navbar = () => {
                     <p onClick={handleDeliveryBtn} className={handleBtn && darkValue ? 'bg-white text-black rounded-full p-2 border-y-orange-500 cursor-pointer  duration-500 ' : handleBtn && !darkValue ? 'bg-black rounded-full p-2 border-y-orange-500 cursor-pointer  duration-500 ' : 'bg-gray-400 rounded-full p-2  cursor-pointer duration-500'}>Delivery</p>
                     <p onClick={handlePickupDelivery} className={!handleBtn && darkValue ? 'bg-white text-black rounded-full p-2  cursor-pointer': !handleBtn && !darkValue ? 'bg-black rounded-full p-2  cursor-pointer ' : 'bg-gray-400 rounded-full p-2  cursor-pointer'}>PickUp</p>
                 </div>
-           </div>
-
-           
+           </div>         
 
            <div className='flex items-center space-x-1 '>
                 <div className='hidden md:flex lg:ml-4 items-center bg-gray-500 text-white rounded-full text-xl'>
@@ -72,7 +74,7 @@ const Navbar = () => {
                     <button onClick={()=> { dispatch(dark())}} className= {darkValue ? ' text-black rounded-full p-2  cursor-pointer bg-white' : ' text-white rounded-full p-2  cursor-pointer'}><BsMoon/></button>
                 </div>
 
-               <Link to='bagorder' className='relative flex items-center bg-black text-white rounded-full pl-4 pr-5 md:pr-7 py-2 space-x-1'>
+               <Link to='bagorder' className={`relative flex items-center ${totalOrderFood  > 0 || totalOrder > 0 ? "bg-green-500" : "bg-black"} text-white rounded-full pl-4 pr-5 md:pr-7 py-2 space-x-1`}>
                     <FaShoppingCart size={'20px'}/>
                     <span className={totalOrderFood  > 0 || totalOrder > 0 ? 'text-md md:text-xl absolute top-0 right-0 text-white pr-1 max-w-max rounded-full ' : 'hidden'}>{totalOrderFood + totalOrder}</span>
                </Link>
@@ -86,14 +88,14 @@ const Navbar = () => {
                     )}
                </div>
            </div >
-          <div className={showLogout ?  'fixed top-16 right-2 lg:right-28 bg-orange-500 text-white p-2 rounded-sm translate-y-0 duration-700 ease-in-out' : "hidden translate-y-0 duration-700 ease-in-out"}>
-               <button onClick={() => {
+        </div>
+          <div className={showLogout ? 'max-w-6xl mx-auto flex justify-end  duration-700 ease-in-out' : ' flex justify-end max-w-6xl mx-auto  -translate-y-52 duration-700 ease-in-out'}>
+               <button className='flex items-center bg-orange-500 text-white px-4 py-1 rounded-sm' onClick={() => {
                     logOut()
                     handleShowLogout()
-               }} className='flex items-center'>LogOut <span className='ml-1'><MdLogout/></span></button>
+                    navigate("/")
+               }}>LogOut <span className='ml-1'><MdLogout/></span> </button>
           </div>
-        </div>
-
 
    
    
@@ -116,6 +118,7 @@ const Navbar = () => {
                               <Link to='/location' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <BiSolidMapPin/> <span className='ml-2 '> Maps</span></Link>
                               <Link to='/rate' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <SlGraph/> <span className='ml-2 '>Rates</span></Link>
                               <Link to='/theme' onClick={handleNav} className={nav ? 'flex items-center text-xl mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <FaCloudMoon/> <span className='ml-2 text-lg'>Change Theme</span></Link>
+                              <Link to='/feedback' onClick={handleNav} className={nav ? 'flex items-center text-xl mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdFeedback/> <span className='ml-2 text-lg'>FeedBack</span></Link>
                               <Link to='/about' onClick={handleNav} className={nav ? 'flex items-center text-lg mt-4 cursor-pointer hover:pl-4 duration-500 hover:border-l-[30px]  hover:border-orange-500 ' : 'hidden'}> <MdPerson/> <span className='ml-2 '>About Me</span></Link>
                          </ul>
                     </div>

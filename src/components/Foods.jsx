@@ -6,8 +6,12 @@ import Search from './Search'
 import ReactPaginate from 'react-paginate'
 import { useAnimelContext } from '../context/AnimelContext'
 import {AiFillWarning} from 'react-icons/ai'
+import {FcPlus} from 'react-icons/fc'
 import ModelWarningFilter from './ModelWarningFilter'
 import ModelLogin from './ModelLogin'
+
+import {Slide, ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const Foods = () => {
@@ -45,6 +49,10 @@ const Foods = () => {
 
       const handleOpenModelWarning = () => {
         setOpenModelWarning(prev => !prev)
+      }
+      
+      const showToastify = () => {
+        toast.success('Added To BagOrder');
       }
 
     // if(isLoading){
@@ -89,9 +97,16 @@ const Foods = () => {
             {showModelLogin ? ( <div className="">
               {showModelLogin ? <ModelLogin setShowModelLogin={setShowModelLogin} showModelLogin={showModelLogin} /> : null}
             </div>) :null }
+
           </div>
         </div>
       </div>
+
+      <ToastContainer
+        position='top-center'
+        theme='light'
+        transition={Slide}
+      />
       
       <div className='md:flex md:justify-between '>
           <div className='p-3 border-b-2 border-orange-500 shadow-2xl'>
@@ -121,7 +136,7 @@ const Foods = () => {
       <>
         <div className='grid  grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 p-3 pt-14'>
             {filteredFoods.slice(pageVisited,pageVisited + foodPerPage).map((fod)=>{
-                return <FoodsList key={fod.id} food={fod} showModelLogin={showModelLogin} setShowModelLogin={setShowModelLogin} />
+                return <FoodsList key={fod.id} food={fod} showModelLogin={showModelLogin} setShowModelLogin={setShowModelLogin} showToastify={showToastify} />
             })}
         </div>
         <div className='p-4'>
@@ -139,21 +154,7 @@ const Foods = () => {
         </div>
         </>
         
-      </div>
-
-
-    {/* <div className='text-center pt-4'>
-      {filteredFoods.length > visibleFood &&
-      <>
-      <button  onClick={showMoreFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent   text-white  duration-500'}>Show More </button>
-      </>}
-      {filteredFoods.length === visibleFood &&
-      <>
-      <button  onClick={showLessFood} className={darkValue ? 'bg-orange-500 px-6 py-2 rounded-md text-white hover:bg-transparent border-2 border-orange-500    duration-500' : 'bg-orange-500 px-6 py-2 rounded-md border-2 border-orange-500 hover:text-black hover:bg-transparent  text-white  duration-500'}>Show Less </button>
-      </>}
-      </div> */}
-     
-        
+      </div>     
     </div>
   )
 }

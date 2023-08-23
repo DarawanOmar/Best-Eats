@@ -4,13 +4,20 @@ import {FaHourglassEnd} from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {MdRestaurant} from 'react-icons/md'
+import { useAnimelContext } from '../context/AnimelContext'
 
-const ModelOrder = ({setOpenDailogBox}) => {
+
+
+const ModelOrder = ({setOpenDailogBox, showToastify}) => {
     
     const darkValue = useSelector((state)=>state.dark.isDark);
     const[successBox, setSuccessBox] = useState(false)
+    const {setAnimalCarts,setFoodCarts} = useAnimelContext()
+    
     const handleSuccessBox = () => {
         setSuccessBox(prev => !prev)
+        setAnimalCarts([])
+        setFoodCarts([])
     }
   return ( 
         <div className='fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm flex justify-center items-center font-serif'>
@@ -36,6 +43,7 @@ const ModelOrder = ({setOpenDailogBox}) => {
                         <Link to='/' className='btn-order btn-hover'>Go Back To Home</Link>
                     </div>
                 </div>
+
             </div>
 
             {/* Dailog Box */}
@@ -54,12 +62,16 @@ const ModelOrder = ({setOpenDailogBox}) => {
                         </div>
                     <div className="text-center pt-3">
                         <div>
-                            <button onClick={handleSuccessBox} className='btn-success btn-hover'>Yes</button>
+                            <button onClick={() => {
+                                handleSuccessBox()
+                                showToastify()
+                            }} className='btn-success btn-hover'>Yes</button>
                             <button onClick={ () => setOpenDailogBox(false)} className='btn-warning btn-hover'>No</button>
                         </div>
                     </div>
                     </div>
                 </div>
+
             </div>
         </div>
   )
