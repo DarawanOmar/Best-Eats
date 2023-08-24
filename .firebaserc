@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "react-posts-project-7ffca"
-  }
+    "default": "fastfood-project",
+    "food": "fastfood-project"
+  },
+  "targets": {},
+  "etags": {}
 }
