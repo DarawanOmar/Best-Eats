@@ -6,24 +6,29 @@ import { ImLocation } from 'react-icons/im';
 import { RiUserLocationFill } from 'react-icons/ri';
 import ReactDOMServer from 'react-dom/server';
 import { useSelector } from "react-redux";
-import ModelOrder from "./ModelOrder";
-import ModelReloadLocation from "./ModelReloadLocation";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import CustomModel from "./CustomModel";
+import { FaHourglassEnd } from "react-icons/fa";
+import { useAnimelContext } from "../context/AnimelContext";
+
 
 const Map = () => {
   const darkValue = useSelector((state)=>state.dark.isDark);
-  const [openDailogBox, setOpenDailogBox] = useState(false)
+  const [orderModel, setOrderModel] = useState(false)
   const mapElement = useRef();
   const [map, setMap] = useState({});
   const [longitude, setLongitude] = useState(45.416107);
   const [latitude, setLatitude] = useState(35.566864);
   const[reload,setReload] = useState(false)
   const[openModelReloadLocation,setOpenModelReloadLocation] = useState(false)
+  const[successOpenOrder,setSuccessOpenOrder] = useState(false)
+
+  const {setAnimalCarts,setFoodCarts} = useAnimelContext()
   
-  const handleOpenDailogBox = () => {
-      setOpenDailogBox(prev => !prev)
+  const handleOrderModel = () => {
+      setOrderModel(prev => !prev)
   }
   const convertToPoints = (lngLat) => {
     return {
@@ -179,22 +184,65 @@ const Map = () => {
       <>
         {map && (
             <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[650px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center  h-[550px] md:h-[650px] w-screen  px-4"}>
+              
               {/* Top Text */}
               <div className={darkValue ? "pb-2 text-white italic my-4":"pb-2 italic my-4"}>
                 <h1 className='text-center text-xl font-bold '> Mount Your Locations</h1>
                 <p className='text-center capitalize'> Choose Your Current Location For Find You And Fastly Giving Your Delivery! When you Found your Location Just Click Your Location</p>
               </div>
+
               {/* Map */}
               <div ref={mapElement} className="h-full w-full "></div>  
+
               {/* Buttons */}
               <div className="mt-4 flex justify-between items-center py-10">
-                <button className="btn-order bg-red-500 md:btn-hover" onClick={()=> {
-                  setOpenModelReloadLocation(prev => !prev)
-                }}>Reload</button>            
-                <button onClick={handleOpenDailogBox} className="btn-order md:btn-hover">Order</button>
+                <button className="btn-order bg-red-500 md:btn-hover" onClick={()=> setOpenModelReloadLocation(prev => !prev)}>Reload</button>            
+                <button onClick={handleOrderModel} className="btn-order md:btn-hover">Order</button>
               </div> 
-              <div>{openDailogBox ? <ModelOrder setOpenDailogBox={setOpenDailogBox} showToastify={showToastify}/> : null}</div>
-              <div>{openModelReloadLocation ? <ModelReloadLocation setReload={setReload} openModelReloadLocation={openModelReloadLocation} setOpenModelReloadLocation={setOpenModelReloadLocation} /> : null}</div>
+              
+              {orderModel && 
+              <CustomModel 
+                title={"Eat"} 
+                closeX={"x"} 
+                yesFunctionality={()=> {
+                  setSuccessOpenOrder(prev => !prev)
+                  handleOrderModel()
+                  showToastify()
+                }}
+                closeFunctionality={handleOrderModel} 
+                yes={"Yes"} 
+                no={"No"} 
+                text={"If You Sure Your Location Click Yes To Order ?"}
+              />}
+
+              {successOpenOrder && 
+              <CustomModel 
+                title={"Eat"} 
+                closeX={"x"} 
+                namePage={"Back To Home"} 
+                yesFunctionality={() => {
+                  setAnimalCarts([])
+                  setFoodCarts([])
+                }}
+                to={"/"} 
+                closeFunctionality={()=>setSuccessOpenOrder(prev => !prev)} 
+                text={`Your Order Successfully sent please wait until your delivery coming ${ <FaHourglassEnd/> } `}
+              />}
+              
+              {openModelReloadLocation && 
+              <CustomModel 
+                title={"Eat"} 
+                closeX={"x"} 
+                yes={"Reload"} 
+                yesFunctionality={() => {
+                  setReload(prev => !prev)
+                  setOpenModelReloadLocation(prev => !prev)
+                  }} 
+                no={"Exit"} 
+                closeFunctionality={()=> setOpenModelReloadLocation(prev => !prev)} 
+                text={"Be Careful If You Click Reload  You Lose Chosen Current Selected Location Again You Must Be Choose Your Location "} 
+              />}
+            
             </div>
         )}
         <ToastContainer/>

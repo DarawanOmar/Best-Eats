@@ -7,8 +7,7 @@ import {signInWithPopup} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
 import {GrFormViewHide} from 'react-icons/gr'
 import { useState } from 'react';
-import ModelGoogleAccount from './ModelGoogleAccount';
-// import {useAuthState} from 'react-firebase-hooks/auth'
+import CustomModel from './CustomModel';
 
 const Login = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);
@@ -53,12 +52,16 @@ const Login = () => {
             
             <div className="flex items-center mt-2">
                 <p className={darkValue ? "my-2 text-white" : "my-2"}>No account? <button onClick={() => setShowGoogleAccount(prev => !prev)} className="text-orange-500  px-2 py-1 ">Sign up</button></p>
-            </div>
-            
+            </div>      
         </div>
-        {setShowGoogleAccount && (
-            <ModelGoogleAccount showGoogleAccount={showGoogleAccount} setShowGoogleAccount={setShowGoogleAccount}/>
-        )}
+
+        {showGoogleAccount && 
+        <CustomModel 
+            title={"Eat"} 
+            closeX={"x"} 
+            text={`Just Sing Up With Google Account Available Right Now`}
+            closeFunctionality={() => setShowGoogleAccount(prev => !prev)}
+        />}
     </div>
 
   )

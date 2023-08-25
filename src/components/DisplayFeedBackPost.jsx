@@ -9,11 +9,13 @@ import {RiEdit2Fill} from 'react-icons/ri'
 import {Bounce, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link } from 'react-router-dom';
+import CustomModel from './CustomModel';
 
 const DisplayFeedBackPost = ({username, image, title, date, docId, userId,showDeleteNotification, handelDeletePost}) => {
     const darkValue = useSelector((state)=>state.dark.isDark);
 
     const [likes, setLikes] = useState([])
+    const[showModelLogin,setShowModelLogin] = useState(false)
 
     const[user] = useAuthState(auth)
     const likeRef = collection(db,"likes")
@@ -75,10 +77,21 @@ const DisplayFeedBackPost = ({username, image, title, date, docId, userId,showDe
             {user?.uid === userId ? (
 
             <div className="flex space-x-2">
-                <button onClick={deletePost} className='text-xl hover:text-red-500 duration-500'> <MdDelete/> </button>
+                <button onClick={() => setShowModelLogin(prev => !prev)} className='text-xl hover:text-red-500 duration-500'> <MdDelete/> </button>
                 <Link  to={`/upatepostfeddback/${docId}`} className='text-xl hover:text-green-500 duration-500'> <RiEdit2Fill/> </Link>
             </div>
             ): null}
+
+            {showModelLogin && 
+            <CustomModel 
+              title={"Eat"} 
+              closeX={"x"} 
+              text={"Are You Sure Want Delete Post ? "} 
+              yes={"Yes"} 
+              no={"No"} 
+              closeFunctionality={() => setShowModelLogin(prev => !prev)}
+              yesFunctionality={() => deletePost()}
+            />}
            
         </div>
                 <div className="my-2">

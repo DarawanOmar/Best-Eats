@@ -26,11 +26,12 @@ const UpdatePost = () => {
         const postRef = doc(db,"postFeedBack",docId)
         const data = await getDoc(postRef)
         const splitObj = data.data()
-        setDataBack(splitObj?.title)
+        setDataBack(splitObj.title)
     }
     useEffect(()=>{
         getPost()
     },[])
+    console.log(dataBack);
 
     const handleOnSubmit = async (data) => {
         const updateRef = doc(db,"postFeedBack",docId)

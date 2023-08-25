@@ -51,14 +51,13 @@ const FoodsList = ({food, setShowModelLogin, showModelLogin, showToastify}) => {
 
         
         {user ? ( 
+          <button onClick={()=>{
+              handeFavoraite()
+              addToFavoraiteFood(food.id)
+              }} className={favorite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ favorite ? <RiHeart3Fill/> : <RiHeartAddFill/> }
+          </button>) : (
 
-        <button onClick={()=>{
-            handeFavoraite()
-            addToFavoraiteFood(food.id)
-            }} className={favorite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ favorite ? <RiHeart3Fill/> : <RiHeartAddFill/> }
-        </button>) : (
-
-        <button onClick={()=>setShowModelLogin(!showModelLogin)} className={favorite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ favorite ? <RiHeart3Fill/> : <RiHeartAddFill/> }</button>
+          <button onClick={()=>setShowModelLogin(!showModelLogin)} className={favorite ? 'absolute top-0 right-0 text-orange-500 bg-white flex justify-center items-center text-center h-5 w-5 rounded-full' : 'absolute top-0 right-0 bg-white text-black flex justify-center items-center text-center h-5 w-5 rounded-full '}>{ favorite ? <RiHeart3Fill/> : <RiHeartAddFill/> }</button>
         )}
         
      
