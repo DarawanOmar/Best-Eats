@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAnimelContext } from '../context/AnimelContext'
-import ListAnimels from './ListAnimels'
+import ListAnimels from '../components/ListAnimels'
 import Search from '../components/Search'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'

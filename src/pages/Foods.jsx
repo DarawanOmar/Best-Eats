@@ -1,15 +1,15 @@
 import React, { useState ,useEffect } from 'react'
 import {  useSelector  } from 'react-redux'
 // import {ScaleLoader} from 'react-spinners'
-import FoodsList from './FoodsList'
-import Search from './Search'
+import FoodsList from '../components/FoodsList'
+import Search from '../components/Search'
 import ReactPaginate from 'react-paginate'
 import { useAnimelContext } from '../context/AnimelContext'
 import {AiFillWarning} from 'react-icons/ai'
 
 import {Slide, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import CustomModel from './CustomModel'
+import CustomModel from '../components/CustomModel'
 
 
 const Foods = () => {

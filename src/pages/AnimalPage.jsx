@@ -2,7 +2,7 @@ import React from 'react'
 import { useAnimelContext } from '../context/AnimelContext';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import AnimalPageDisplay from './AnimalPageDisplay';
+import AnimalPageDisplay from '../components/AnimalPageDisplay';
 
 const AnimalPage = () => {
     const {animal} = useAnimelContext()

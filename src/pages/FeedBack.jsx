@@ -11,7 +11,7 @@ import {yupResolver} from "@hookform/resolvers/yup"
 
 import {addDoc, collection, getDocs} from 'firebase/firestore'
 import {db} from '../config/firebase'
-import DisplayFeedBackPost from './DisplayFeedBackPost';
+import DisplayFeedBackPost from '../components/DisplayFeedBackPost';
 
 import {Bounce, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
-import CustomModel from "./CustomModel";
+import CustomModel from "../components/CustomModel";
 import { FaHourglassEnd } from "react-icons/fa";
 import { useAnimelContext } from "../context/AnimelContext";
 

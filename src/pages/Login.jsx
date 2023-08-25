@@ -7,7 +7,7 @@ import {signInWithPopup} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
 import {GrFormViewHide} from 'react-icons/gr'
 import { useState } from 'react';
-import CustomModel from './CustomModel';
+import CustomModel from '../components/CustomModel';
 
 const Login = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);

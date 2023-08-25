@@ -1,22 +1,22 @@
 import React from 'react'
 import {  Routes , Route , useLocation} from "react-router-dom";
-import BagOrder from "../components/BagOrder";
-import Home from "../components/Home";
-import Favoraite from "../components/Favoraite";
-import About from "../components/About";
-import Foods from "../components/Foods";
-import FoodPage from "../components/FoodPage";
-import Animles from '../pages/Animles';
-import Location from './Location';
 import {AnimatePresence} from 'framer-motion'
-import Map from './Map';
-import RateNavBar from './RateNavBar';
-import AnimalPage from './AnimalPage';
 import useScrollToTop from '../hook/useScrollToTop';
-import Theme from './Theme';
-import Login from './Login';
-import FeedBack from './FeedBack';
-import UpdatePost from './UpdatePost';
+import BagOrder from "../pages/BagOrder";
+import Home from "../pages/Home";
+import Favoraite from "../pages/Favoraite";
+import About from "../pages/About";
+import Foods from "../pages/Foods";
+import FoodPage from "../pages/FoodPage";
+import Animles from '../pages/Animles';
+import Location from '../pages/Location';
+import Map from '../pages/Map';
+import RateNavBar from '../pages/RateNavBar';
+import AnimalPage from '../pages/AnimalPage';
+import Theme from '../pages/Theme';
+import Login from '../pages/Login';
+import FeedBack from '../pages/FeedBack';
+import UpdatePost from '../pages/UpdatePost';
 
 const Routess = () => {
 
@@ -26,7 +26,7 @@ const Routess = () => {
   return (
     <div>
       <AnimatePresence >
-        <Routes location={location} key={location.pathname}>
+          <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="bagorder" element={<BagOrder />} />
           <Route path="/favoraite" element={<Favoraite />} />

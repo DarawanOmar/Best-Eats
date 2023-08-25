@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAnimelContext } from '../context/AnimelContext'
-import RateDisplayNavBar from './RateDisplayNavBar'
+import RateDisplayNavBar from '../components/RateDisplayNavBar'
 import { Link } from 'react-router-dom'
 
 const RateNavBar = () => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import FoodBagOrder from './FoodBagOrder';
+import FoodBagOrder from '../components/FoodBagOrder';
 import { Link } from 'react-router-dom';
 import {motion} from 'framer-motion'
 import { useAnimelContext } from '../context/AnimelContext';
-import AnimelBagOrder from './AnimelBagOrder';
+import AnimelBagOrder from '../components/AnimelBagOrder';
 import { SiCodechef } from 'react-icons/si'
 import { CgPlayListAdd} from 'react-icons/cg'
 import { GiLion } from 'react-icons/gi';

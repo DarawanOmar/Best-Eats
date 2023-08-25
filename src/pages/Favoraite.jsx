@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector  } from 'react-redux'
-import FavoraiteListFood from './FavoraiteListFood';
+import FavoraiteListFood from '../components/FavoraiteListFood';
 import { Link } from 'react-router-dom';
 import {motion} from 'framer-motion'
 import { useAnimelContext } from '../context/AnimelContext';
-import FavoraiteListAnimel from './FavoraiteListAnimel';
+import FavoraiteListAnimel from '../components/FavoraiteListAnimel';
 
 
 const Favoraite = () => {

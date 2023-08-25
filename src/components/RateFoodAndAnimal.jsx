@@ -53,12 +53,11 @@ const RateFood = () => {
           {itemsRate.map((item) => {
             return (
               <SwiperSlide key={item.id}>
-                {" "}
                 <ListRateFoodAndAnimal
                   {...item}
                   showModelLogin={showModelLogin}
                   setShowModelLogin={setShowModelLogin}
-                />{" "}
+                />
               </SwiperSlide>
             );
           })}

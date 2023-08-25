@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import FoodPageDisplay from "./FoodPageDisplay";
+import FoodPageDisplay from "../components/FoodPageDisplay";
 import { Link } from "react-router-dom";
 import { useAnimelContext } from "../context/AnimelContext";
 
