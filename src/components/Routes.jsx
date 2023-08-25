@@ -16,6 +16,7 @@ import useScrollToTop from '../hook/useScrollToTop';
 import Theme from './Theme';
 import Login from './Login';
 import FeedBack from './FeedBack';
+import UpdatePost from './UpdatePost';
 
 const Routess = () => {
 
@@ -40,6 +41,7 @@ const Routess = () => {
           <Route path='/login' element={<Login/>}/>
           <Route path='/feedback' element={<FeedBack/>}/>
           <Route path='/animalpage/:id' element={<AnimalPage/>}/>
+          <Route path='/upatepostfeddback/:docId' element={<UpdatePost/>}/>
         </Routes>
       </AnimatePresence>
     </div>

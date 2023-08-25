@@ -15,21 +15,19 @@ const Login = () => {
     const[showPassword, setShowPassword] = useState(false)
     const[showGoogleAccount,setShowGoogleAccount] = useState(false)
     const navigate = useNavigate()
+    
     const singInWithGoogle = async () => {
-        const result = await signInWithPopup(auth,provider)
+        await signInWithPopup(auth,provider)
         navigate("/")
     }
    
     const handleShowPassword =  () => { setShowPassword(prev => !prev) }
 
-    
-    // const[user] = useAuthState(auth)
-
   return (
     
-    <div className={darkValue ? " flex items-center justify-center  min-h-screen  font-serif  text-black": " flex items-center justify-center h-[500px]  md:h-[650px] font-serif text-black"}>
+    <div className={darkValue ? " flex items-center justify-center  md:min-h-screen  font-serif  text-black": " flex items-center justify-center h-[500px]  md:h-[650px] font-serif text-black"}>
 
-        <div className={darkValue ? "shadow-xl rounded-md p-8 md:p-14 bg-neutral-900" : "shadow-xl rounded-md p-8 md:p-14 bg-neutral-200"}>
+        <div className={darkValue ? "shadow-xl rounded-md p-8 md:p-14 bg-neutral-900 mt-10 md:mt-0 mb-[137px] md:mb-0" : "shadow-xl rounded-md p-8 md:p-14 bg-neutral-200"}>
             <div className="flex items-center justify-between">
                 <h1 className='font-bold text-xl flex items-center text-orange-500'>Best <span className={darkValue ? 'text-white mx-1 duration-500 ': 'text-black mx-1 duration-500 '}>Eat</span> <span><MdRestaurant/></span></h1>
             <h1 className={darkValue ? "my-2 text-white" : "my-2"}>Sign Up</h1>

@@ -90,11 +90,14 @@ const Navbar = () => {
            </div >
         </div>
           <div className={showLogout ? 'max-w-6xl mx-auto flex justify-end  duration-700 ease-in-out' : ' flex justify-end max-w-6xl mx-auto  -translate-y-52 duration-700 ease-in-out'}>
-               <button className='flex items-center bg-orange-500 text-white px-4 py-1 rounded-sm' onClick={() => {
-                    logOut()
-                    handleShowLogout()
-                    navigate("/")
-               }}>LogOut <span className='ml-1'><MdLogout/></span> </button>
+               <button 
+                    className='flex items-center bg-orange-500 text-white px-4 py-1 rounded-sm' 
+                    onClick={() => {
+                         logOut()
+                         handleShowLogout()
+                         navigate("/")
+                    }}
+               >LogOut <span className='ml-1'><MdLogout/></span> </button>
           </div>
 
    

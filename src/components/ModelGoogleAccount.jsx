@@ -18,10 +18,9 @@ const ModelGoogleAccount = ({showGoogleAccount, setShowGoogleAccount}) => {
                 </div>
                 <div className='flex flex-col p-4'>
                     <div className='flex flex-col items-center  space-x-3'>
-                        <p className='text-center '> For Now Just <span className='bg-green-500 text-white'>Sing Up With Google Account</span> Available </p>
-                        <h1 className='py-2'>You Can Login Now With it</h1>
+                        <p className='text-center '>Just <span className='bg-green-500 text-white'>Sing Up With Google Account</span> Available Right Now</p>
                     </div>
-                    <div className="text-center">
+                    <div className="text-center pt-2">
                         <button onClick={() => setShowGoogleAccount(!showGoogleAccount)} className='btn-order md:btn-hover'>Go Now</button>
                     </div>
                 </div>

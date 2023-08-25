@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 import { auth, db } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {BiSolidLike} from 'react-icons/bi'
-
+import {MdDelete} from 'react-icons/md'
+import {RiEdit2Fill} from 'react-icons/ri'
 import {Bounce, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Link } from 'react-router-dom';
 
-const DisplayFeedBackPost = ({username,image,title,date,docId}) => {
+const DisplayFeedBackPost = ({username, image, title, date, docId, userId,showDeleteNotification, handelDeletePost}) => {
     const darkValue = useSelector((state)=>state.dark.isDark);
 
     const [likes, setLikes] = useState([])
@@ -52,13 +54,33 @@ const DisplayFeedBackPost = ({username,image,title,date,docId}) => {
       } else {
           toast.error('Please login to unlike posts');
       }
+
+    }
+    const deletePost = async () => {
+      try {
+          await deleteDoc(doc(db,"postFeedBack",docId))
+          showDeleteNotification()
+          handelDeletePost(docId)
+      } catch (error) {
+          console.log(error);
+      }
   }
   return (
     <div className={darkValue ? "flex flex-col shadow-xl p-4 rounded-md bg-neutral-900" : "flex flex-col shadow-xl p-4 rounded-md bg-neutral-200"}>
-                <div className="flex items-center space-x-4 py-2 border-b-2 border-orange-500">
-                    <h1 className='text-lg font-bold italic'>{username}</h1>
-                    <img src={image} alt={username} className='w-8 h-8 rounded-full' />
-                </div>
+                <div className="flex justify-between items-center space-x-4 py-2 border-b-2 border-orange-500">
+            <div className='flex items-center space-x-2'>
+                <h1 className=' text-lg font-bold italic'>{username}</h1>
+                <img src={image} alt={username} className='w-8 h-8 rounded-full' />
+            </div>
+            {user?.uid === userId ? (
+
+            <div className="flex space-x-2">
+                <button onClick={deletePost} className='text-xl hover:text-red-500 duration-500'> <MdDelete/> </button>
+                <Link  to={`/upatepostfeddback/${docId}`} className='text-xl hover:text-green-500 duration-500'> <RiEdit2Fill/> </Link>
+            </div>
+            ): null}
+           
+        </div>
                 <div className="my-2">
                     {title}
                 </div>

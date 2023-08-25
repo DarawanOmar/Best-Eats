@@ -36,10 +36,10 @@ const FeedBack = () => {
         const data = await getDocs(postRef)
         setPostList(data.docs.map((doc) => ({...doc.data(),docId:doc.id})));
     }
-     useEffect(()=>{
+    useEffect(()=>{
         getPosts()
-     },[])
-
+    },[])
+    
      const handleOnSubmit = async (data) => {
         if (user) {
             const newPost = {
@@ -57,6 +57,14 @@ const FeedBack = () => {
             toast.error('User not authenticated');
         }
     }
+    const showDeleteNotification = () => {
+        toast.error("Post Delete SuccessFully");
+      };
+    
+    
+      const handelDeletePost = (deleteDoc) => {
+        setPostList((prev) => prev.filter((doc) => doc.docId !== deleteDoc));
+      };
 
 
 
@@ -83,7 +91,7 @@ const FeedBack = () => {
             <div className="pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
 
                 {postList?.map(post => {
-                    return <DisplayFeedBackPost key={post.docId} {...post} />
+                    return <DisplayFeedBackPost key={post.docId} {...post} handelDeletePost={handelDeletePost} showDeleteNotification={showDeleteNotification} />
                 })}
             </div>
             <ToastContainer

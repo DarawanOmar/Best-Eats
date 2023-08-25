@@ -1,5 +1,7 @@
 import { createContext, useContext, useState} from "react";
 import {faker} from '@faker-js/faker'; // Adjusted import for faker
+import { Bounce, ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const AnimelContext = createContext({})
 
@@ -391,7 +393,11 @@ export const AnimelContextProvider = ({ children }) => {
     })
   }
 
- 
+  function showUpdateNotification(){
+    toast.success("Post Update SuccessFully");
+  }
+
+
     const totalOrder = animalCarts.reduce((total,animelCart)=>{ return total + animelCart.quantity } , 0 )
     const totolPrice = animalCarts.reduce((total,animelCart) => { 
       const animel = animal.find(animell => animell.id === animelCart.id)
@@ -428,9 +434,15 @@ export const AnimelContextProvider = ({ children }) => {
           removeFoodFromCarts,
           addToFavoraite ,
           addToFavoraiteFood,
-          addRateFoodAndAnimals
+          addRateFoodAndAnimals,
+          showUpdateNotification
           }}>
             {children}
+            <ToastContainer
+                position='top-right'
+                theme='light'
+                transition={Bounce}
+            />
         </AnimelContext.Provider>
     )
 
