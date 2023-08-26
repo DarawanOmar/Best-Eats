@@ -99,7 +99,6 @@ const Animles = () => {
           activeClassName="border-2  border-orange-500 bg-orange-500 px-4 py-1 rounded-md text-white  border-2 hover:bg-transparent hover:border-orange-500 hover:text-black duration-500 cursor-pointer"
         />
       </div>
-      <ToastContainer position="top-center" theme="light" transition={Slide} />
     </div>
   );
 }

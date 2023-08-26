@@ -15,11 +15,13 @@ import DisplayFeedBackPost from '../components/DisplayFeedBackPost';
 
 import {Bounce, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { PulseLoader } from 'react-spinners';
 
 
 const FeedBack = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);
     const [postList, setPostList] = useState(null)
+    const [loading, setLoading] = useState(true)
     const[user] = useAuthState(auth)
 
     const schema = yup.object().shape({
@@ -35,9 +37,12 @@ const FeedBack = () => {
     const getPosts = async () => {
         const data = await getDocs(postRef)
         setPostList(data.docs.map((doc) => ({...doc.data(),docId:doc.id})));
+        setLoading(false)
     }
     useEffect(()=>{
+        setTimeout(()=>{
         getPosts()
+        },3000)
     },[])
     
      const handleOnSubmit = async (data) => {
@@ -66,7 +71,19 @@ const FeedBack = () => {
         setPostList((prev) => prev.filter((doc) => doc.docId !== deleteDoc));
       };
 
-
+      if(loading){
+        return (
+        <div className='flex flex-col justify-center items-center mt-44 md:mt-56 '>
+            <h1 className='text-2xl md:text-3xl font-bold italic py-3'>Loading...</h1>
+            <span className='text-4xl'>
+                <PulseLoader
+                    color="#ff9900"
+                    speedMultiplier={0.6}
+                    size={30}
+                />
+            </span>
+        </div>
+      )}
 
   return (
 
@@ -75,11 +92,11 @@ const FeedBack = () => {
         <>
             <div className="">
                 <div className='text-center'>
-                    <div className='flex justify-center items-center '>
+                    <div className='flex justify-center items-center mb-2 '>
                         <h1 className='text-lg md:text-2xl font-bold italic mr-3'>Hello Dear {user?.displayName}</h1>
                         <img src={user?.photoURL} alt={user?.displayName} className='w-10 h-10 rounded-full' />
                     </div>
-                    <p className='text-md md:text-lg text-gray-400'>Thank You For Choosn Us Now We Wanna Get Your FeedBack About Our Application</p>
+                    <p className='text-md md:text-lg text-gray-400 px-2 md:px-0'>Thank You For Choosn Us Now We Wanna Get Your FeedBack About Our Application</p>
                 </div>
                 <form onSubmit={handleSubmit(handleOnSubmit)} className="flex flex-col justify-center items-center p-4">
                     <label className='py-2'>Write Your FeedBack Here</label>

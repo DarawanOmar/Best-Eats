@@ -2,11 +2,8 @@ import React, { useEffect } from 'react'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import { Link } from 'react-router-dom'
-import CustomModel from './CustomModel'
-import { useState } from 'react'
 
 const Hero = () => {
-  const[openMode,setOpenMode] = useState(false)
 
   useEffect(()=>{
     Aos.init()
@@ -42,14 +39,12 @@ const Hero = () => {
         <div className=' mt-5 flex text-center flex-col md:hidden'>
           <p className='capitalize text-center'> you can order food and animals and amount  location for fast delivery and add food and animals to favoraite and aslo rate food & animals.</p>
           <h3> You Can Order Now Click The Button Below : </h3>
-          <div className='flex mb-10 justify-center items-center'>
+          <div className='flex mb-10 justify-between items-center'>
             <Link to='/food' className='btn-order md:btn-hover mt-4 text-sm py-4'>Order Food Now </Link >
             <Link to='/animels' className='btn-order md:btn-hover mt-4 text-sm py-4'>Order Animals Now </Link >
-            <button onClick={()=>setOpenMode(prev => !prev)} className='btn-order'>Model</button>
           </div>
         </div>
       </div>
-        {openMode && <CustomModel title={"Best"} text={"Are You Sure Want TO Delete ?"} namePage={"Login"} to={"/login"} closeX={"x"} closeFunctionality={()=>setOpenMode(prev => !prev)}/>}
     </div>
   )
 }

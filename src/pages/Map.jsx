@@ -70,6 +70,25 @@ const Map = () => {
         .setLngLat(lngLat)
         .addTo(map)
 }
+const displayDistance = (distance) => {
+  let distanceContainer = document.getElementById('distanceContainer');
+  if (!distanceContainer) {
+      distanceContainer = document.createElement('div');
+      distanceContainer.id = 'distanceContainer';
+      distanceContainer.style.position = 'absolute';
+      distanceContainer.style.top = '10px';
+      distanceContainer.style.right = '10px';
+      distanceContainer.style.padding = '8px 12px';
+      distanceContainer.style.backgroundColor = 'black';
+      distanceContainer.style.color = 'white';
+      distanceContainer.style.borderRadius = '8px';
+      mapElement.current.appendChild(distanceContainer);
+  }
+
+  distanceContainer.innerHTML = `Distance: ${distance} km`;
+}
+
+
 
   useEffect(() => {
     const origin = {
@@ -152,18 +171,25 @@ const Map = () => {
 
     const recalculateRoutes = () => {
       sortDestinations(destinations).then((sorted) => {
-        sorted.unshift(origin)
-
+        sorted.unshift(origin);
+    
         ttapi.services
           .calculateRoute({
             key: process.env.REACT_APP_TOM_TOM_API_KEY,
             locations: sorted,
           })
           .then((routeData) => {
-            const geoJson = routeData.toGeoJson()
-            drawRoute(geoJson, map)
-        })
-      })
+            const geoJson = routeData.toGeoJson();
+            drawRoute(geoJson, map);
+    
+            // Extracting the distance
+            const distanceInMeters = routeData.routes[0].summary.lengthInMeters;
+            const distanceInKm = (distanceInMeters / 1000).toFixed(2); // Convert to km
+    
+            // Display the distance
+            displayDistance(distanceInKm);
+        });
+      });
     }
 
 

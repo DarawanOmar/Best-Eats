@@ -7,7 +7,7 @@ import ReactPaginate from 'react-paginate'
 import { useAnimelContext } from '../context/AnimelContext'
 import {AiFillWarning} from 'react-icons/ai'
 
-import {Slide, ToastContainer, toast } from 'react-toastify'
+import {toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import CustomModel from '../components/CustomModel'
 
@@ -22,7 +22,7 @@ const Foods = () => {
     const [pageNumner,setPageNumber] = useState(0);
     const {foods} = useAnimelContext()
     const[showModelLogin,setShowModelLogin] = useState(false)
-    const[openMode,setOpenMode] = useState(false)
+    const[openModel,setOpenModel] = useState(false)
    
 
     useEffect(() => {
@@ -75,29 +75,19 @@ const Foods = () => {
     
 
   return (
-    <div id="food" className="max-w-6xl mx-auto p-3 font-serif space-y-4">
+    <div className="max-w-6xl mx-auto p-3 font-serif space-y-4">
       <div
-        className={
-          darkValue
-            ? "sticky  top-16 z-10 bg-black duration-500"
-            : "sticky  top-16 z-10 bg-white duration-500"
-        }
-      >
+        className={`sticky  top-16 z-10 ${darkValue ? "bg-black" : "bg-white"}  duration-500` }>
         <h1 className="text-center text-2xl md:text-4xl font-bold text-orange-500 border-b-2 rounded-full border-orange-500">
-          {" "}
           Top Rated Menu Items
         </h1>
         <div className="py-4 flex  justify-between items-center">
           <Search search={search} setSearch={setSearch} />
           <div className="">
-            <button
-              onClick={() => setOpenMode((prev) => !prev)}
-              className="text-orange-500 text-3xl"
-            >
-              <AiFillWarning />
-            </button>
+            <button onClick={() => setOpenModel((prev) => !prev)} className="text-orange-500 text-3xl"> <AiFillWarning /></button>
+
             {/*  model Warinig*/}
-            {openMode && (
+            {openModel && (
               <CustomModel
                 title={"Eat"}
                 warning={"Warning"}
@@ -105,46 +95,35 @@ const Foods = () => {
                   "Before Filter the Food type And Price Change Filter Type To ( All )  And The Paginaition Number Change To ( 1 )"
                 }
                 closeX={"x"}
-                closeFunctionality={() => setOpenMode((prev) => !prev)}
+                closeFunctionality={() => setOpenModel((prev) => !prev)}
               />
             )}
-            {/* model Login */}
-            {showModelLogin ? (
-              <div className="">
-                {showModelLogin ? (
-                  <CustomModel
-                    title={"Eat"}
-                    closeX={"x"}
-                    text={
-                      " Please Login To Allow you Order And Favoraite And Offers...."
-                    }
-                    namePage={"Login"}
-                    to={"/login"}
-                    closeFunctionality={() => setShowModelLogin(prev => !prev)}
-                  />
-                ) : null}
-              </div>
-            ) : null}
+
+            {/* model Login */}      
+            {showModelLogin && (
+              <CustomModel
+                title={"Eat"}
+                closeX={"x"}
+                text={
+                  " Please Login To Allow you Order And Favoraite And Offers...."
+                }
+                namePage={"Login"}
+                to={"/login"}
+                closeFunctionality={() => setShowModelLogin(prev => !prev)}
+              />
+            )}
           </div>
         </div>
       </div>
 
-      <ToastContainer position="top-right" theme="light" transition={Slide} />
 
       <div className="md:flex md:justify-between ">
         <div className="p-3 border-b-2 border-orange-500 shadow-2xl">
           <h1 className="font-bold pb-4 text-xl"> Filter Type </h1>
           <div className="grid grid-cols-3 gap-3 md:flex md:justify-between md:items-center md:space-x-4 lg:space-x-6">
-            <button
-              onClick={resetFilters}
-              className={
-                darkValue
-                  ? " bg-orange-500 text-white px-2 md:py-1 rounded-full border-2 border-orange-500 cursor-pointer hover:text-white  hover:bg-transparent duration-500"
-                  : "col-span-3  bg-orange-500 text-white px-2 md:py-1 rounded-full border-2 border-orange-500 cursor-pointer hover:text-black  hover:bg-transparent duration-500"
-              }
-            >
-              All{" "}
-            </button>
+            <button onClick={resetFilters}
+              className={`bg-orange-500 text-white px-2 md:py-1 rounded-full border-2 border-orange-500 cursor-pointer ${darkValue ? "hover:text-white" : "hover:text-black"}  hover:bg-transparent duration-500`}>
+            All</button>
             <button
               onClick={() => filterType("pizza")}
               className={
@@ -153,7 +132,6 @@ const Foods = () => {
                   : "bg-orange-500  text-white px-2 md:py-1 rounded-full border-2 border-orange-500 cursor-pointer hover:text-black  hover:bg-transparent duration-500"
               }
             >
-              {" "}
               Pizza
             </button>
             <button

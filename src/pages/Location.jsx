@@ -9,13 +9,16 @@ import { useSelector } from "react-redux";
 
 
 
-const Location = () => {
+
+
+const Map = () => {
   const darkValue = useSelector((state)=>state.dark.isDark);
   const mapElement = useRef();
   const [map, setMap] = useState({});
   const [longitude, setLongitude] = useState(45.416107);
   const [latitude, setLatitude] = useState(35.566864);
 
+  
   const convertToPoints = (lngLat) => {
     return {
       point: {
@@ -56,6 +59,25 @@ const Location = () => {
         .setLngLat(lngLat)
         .addTo(map)
 }
+const displayDistance = (distance) => {
+  let distanceContainer = document.getElementById('distanceContainer');
+  if (!distanceContainer) {
+      distanceContainer = document.createElement('div');
+      distanceContainer.id = 'distanceContainer';
+      distanceContainer.style.position = 'absolute';
+      distanceContainer.style.top = '10px';
+      distanceContainer.style.right = '10px';
+      distanceContainer.style.padding = '8px 12px';
+      distanceContainer.style.backgroundColor = 'black';
+      distanceContainer.style.color = 'white';
+      distanceContainer.style.borderRadius = '8px';
+      mapElement.current.appendChild(distanceContainer);
+  }
+
+  distanceContainer.innerHTML = `Distance: ${distance} km`;
+}
+
+
 
   useEffect(() => {
     const origin = {
@@ -138,18 +160,25 @@ const Location = () => {
 
     const recalculateRoutes = () => {
       sortDestinations(destinations).then((sorted) => {
-        sorted.unshift(origin)
-
+        sorted.unshift(origin);
+    
         ttapi.services
           .calculateRoute({
             key: process.env.REACT_APP_TOM_TOM_API_KEY,
             locations: sorted,
           })
           .then((routeData) => {
-            const geoJson = routeData.toGeoJson()
-            drawRoute(geoJson, map)
-        })
-      })
+            const geoJson = routeData.toGeoJson();
+            drawRoute(geoJson, map);
+    
+            // Extracting the distance
+            const distanceInMeters = routeData.routes[0].summary.lengthInMeters;
+            const distanceInKm = (distanceInMeters / 1000).toFixed(2); // Convert to km
+    
+            // Display the distance
+            displayDistance(distanceInKm);
+        });
+      });
     }
 
 
@@ -162,21 +191,24 @@ const Location = () => {
     return () => map.remove();
   }, [latitude,longitude]);
 
+
+
   return (
-    <>
-    {map && (
-        <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[800px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center h-[550px] md:h-[800px] w-screen  px-4"}>
-          {/* Top Text */}
-          <div className={darkValue ? "pb-2 text-white italic my-4":"pb-2 italic my-4"}>
-            <h1 className='text-center text-xl font-bold '> Practice TO Find Yourself Location</h1>
-            <p className='text-center capitalize'> choose Your current location for find you and fastly giving your delivery! 
-            when Find Location Yourself Just Click Your Location</p>
-          </div>
-          {/* Map */}
-          <div ref={mapElement} className="h-full w-full "></div>  
-        </div>
-    )}
-</>
+      <>
+        {map && (
+            <div className={darkValue ? "flex flex-col max-w-6xl mx-auto justify-center h-[600px] md:h-[650px] w-screen text-black px-4 ": "flex flex-col max-w-6xl mx-auto justify-center  h-[550px] md:h-[650px] w-screen  px-4"}>
+              
+              {/* Top Text */}
+              <div className={darkValue ? "pb-2 text-white italic my-4":"pb-2 italic my-4"}>
+                <h1 className='text-center text-xl font-bold '> Practice Find Your Location</h1>
+                <p className='text-center capitalize'> Choose Your Current Location For Find You And Fastly Giving Your Delivery! When you Found your Location Just Click Your Location</p>
+              </div>
+
+              {/* Map */}
+              <div ref={mapElement} className="h-full w-full "></div>           
+            </div>
+        )}
+      </>
   )
 }
-export default Location;
+export default Map;
