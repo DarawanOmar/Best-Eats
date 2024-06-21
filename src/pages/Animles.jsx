@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
-import { Slide, ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import CustomModel from '../components/CustomModel'
 
 const Animles = () => {
@@ -46,12 +46,10 @@ const Animles = () => {
         }
       >
         <h1 className="text-center text-2xl md:text-4xl font-bold text-orange-500 border-b-2 rounded-full border-orange-500 pb-2 ">
-          {" "}
           Top Rated Menu Items
         </h1>
         <h1 className="md:my-3 p-4  ">
-          {" "}
-          <Search search={search} setSearch={setSearch} />{" "}
+          <Search search={search} setSearch={setSearch} />
         </h1>
       </div>
       {/* model Login */}

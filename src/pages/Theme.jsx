@@ -5,7 +5,11 @@ import { dark, night } from '../features/Dark-Mode/DarkModeSlice';
 const Theme = () => {
     const darkValue = useSelector((state)=>state.dark.isDark);
     const dispatch = useDispatch();
-    const [handleBtn, sethandleBtn] = useState(true)
+    const [handleBtn, sethandleBtn] = useState(false)
+
+    const handleButton = () =>{
+        sethandleBtn(!handleBtn)
+    }
 
     const darkMode = () =>{
         sethandleBtn(true)
@@ -13,9 +17,8 @@ const Theme = () => {
    const lightMode = () =>{
         sethandleBtn(false)
    }
-   console.log(handleBtn);
   return (
-    <div className='min-h-screen font-serif'>
+    <div className='min-h-screen font-serif max-w-6xl mx-auto'>
         <div className='max-w-6xl mx-auto  flex justify-between items-center  px-4'>
             <h1 className="md:text-xl">Change To Dark Mode Just Turn On </h1>
             <div className='flex items-center space-x-2'>
@@ -31,6 +34,7 @@ const Theme = () => {
                     </div>
                </div>
         </div>
+        
     </div>
   )
 }

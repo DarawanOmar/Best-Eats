@@ -19,7 +19,7 @@ const ListRateFoodAndAnimal = ({id,name,image, setShowModelLogin, showModelLogin
 
   return (
     <div>
-        <div className=" relative rounded-xl ">
+        <div className=" relative rounded-xl shadow-xl">
         <div className={darkValue ? "absolute max-h-[200px] bg-black/60 text-gray-200 w-full h-full flex flex-col justify-center rounded-xl border-2 border-orange-500" : "absolute max-h-[200px] bg-black/60 text-gray-200 w-full h-full flex flex-col justify-center rounded-xl"}>
             <h1 className='text-4xl font-bold '>Rate <span className='text-orange-500'>{name}</span></h1>
             <div className='flex text-2xl cursor-pointer'>

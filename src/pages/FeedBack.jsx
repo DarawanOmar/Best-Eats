@@ -42,7 +42,7 @@ const FeedBack = () => {
     useEffect(()=>{
         setTimeout(()=>{
         getPosts()
-        },3000)
+        },1500)
     },[])
     
      const handleOnSubmit = async (data) => {
@@ -57,10 +57,7 @@ const FeedBack = () => {
             await addDoc(postRef, newPost);
             setPostList(prev => [...prev, { ...newPost, docId: user.uid }]);
             reset();
-            toast.success('FeedBack Send SuccessFully');
-        } else {
-            toast.error('User not authenticated');
-        }
+        } 
     }
     const showDeleteNotification = () => {
         toast.error("Post Delete SuccessFully");

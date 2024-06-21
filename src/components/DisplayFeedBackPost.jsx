@@ -6,8 +6,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import {BiSolidLike} from 'react-icons/bi'
 import {MdDelete} from 'react-icons/md'
 import {RiEdit2Fill} from 'react-icons/ri'
-import {Bounce, ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { Link } from 'react-router-dom';
 import CustomModel from './CustomModel';
 
@@ -25,8 +23,6 @@ const DisplayFeedBackPost = ({username, image, title, date, docId, userId,showDe
           const newLike = { userId: user.uid, postId: docId };
           const docRef = await addDoc(likeRef, newLike);
           setLikes(prev => [...prev, { ...newLike, likeId: docRef.id }]);
-      } else {
-          toast.error('Please login to like posts');
       }
   }
     
@@ -51,11 +47,9 @@ const DisplayFeedBackPost = ({username, image, title, date, docId, userId,showDe
               await deleteDoc(doc(likeRef, likeId));
               setLikes(prev => prev.filter(like => like.likeId !== likeId));
           } catch (error) {
-              toast.error(error.message);
+              console.log(error.message);
           }
-      } else {
-          toast.error('Please login to unlike posts');
-      }
+      } 
 
     }
     const deletePost = async () => {
@@ -78,7 +72,7 @@ const DisplayFeedBackPost = ({username, image, title, date, docId, userId,showDe
 
             <div className="flex space-x-2">
                 <button onClick={() => setShowModelLogin(prev => !prev)} className='text-xl hover:text-red-500 duration-500'> <MdDelete/> </button>
-                <Link  to={`/upatepostfeddback/${docId}`} className='text-xl hover:text-green-500 duration-500'> <RiEdit2Fill/> </Link>
+                {docId && <Link  to={`/upatepostfeddback/${docId}`} className='text-xl hover:text-green-500 duration-500'> <RiEdit2Fill/> </Link>}
             </div>
             ): null}
 
@@ -109,11 +103,7 @@ const DisplayFeedBackPost = ({username, image, title, date, docId, userId,showDe
                   )}
                   {date}
                 </div>
-                <ToastContainer
-                position='top-right'
-                theme='light'
-                transition={Bounce}
-            />
+               
             </div>
   )
 }

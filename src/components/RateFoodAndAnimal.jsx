@@ -11,13 +11,14 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 import { useState } from "react";
 import CustomModel from "./CustomModel";
-
+import useWindowSize from "../utils/useWindowSize";
 const RateFood = () => {
   const[showModelLogin,setShowModelLogin] = useState(false)
 
   useEffect(()=>{
     Aos.init()
   },[])
+  const {width} = useWindowSize()
   return (
     <div className="max-w-6xl mx-auto p-4 font-serif pt-28">
       <h1 className=" text-center font-bold py-4 md:text-2xl">
@@ -25,28 +26,10 @@ const RateFood = () => {
       </h1>
       <div className="" data-aos="fade-up">
         <Swiper
-          slidesPerView={2}
+          slidesPerView={width > 1024 ? 3.7 :  width > 770 ? 2.5 : width > 735 ? 2 :width > 600 ? 1.8 : 1.2 }
           spaceBetween={5}
           pagination={{
             clickable: true,
-          }}
-          breakpoints={{
-            "@0.00": {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            "@0.75": {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            "@1.00": {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            "@1.50": {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
           }}
           modules={[Pagination]}
         >
